@@ -16,19 +16,17 @@ import javax.ws.rs.core.MediaType;
 @RequestScoped
 @Path("magazine")
 @Produces("application/json")
-
 public class MagazineView {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.TEXT_PLAIN)
-    public String postMagazine(Magazine b) {
-        return b.getName();
+    @Produces(MediaType.APPLICATION_JSON)
+    public Magazine postMagazine(Magazine b) {
+        return null;
     }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-
     public ArrayList<Magazine> listMagazine() {
        return null;
     }

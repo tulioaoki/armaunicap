@@ -22,23 +22,23 @@ public class SightView {
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Sight postSight(Sight s){
-        
-        return s;
+        //@TODO DAO LOGIC HERE
+        return null;
     }
     
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Sight listSight(){
-        Sight si = new Sight("Aaa",1,2,3);
-        return si;
+    public ArrayList<Sight> listSight(){
+        //@TODO DAO LOGIC HERE
+        return null;
     }
     
     @Path("/{id}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Sight detailSight(){
-        Sight teste = new Sight("aa",1,3,1);
-        return teste;
+        //@TODO DAO LOGIC HERE
+        return null;
     }
     
     

@@ -16,20 +16,20 @@ import javax.ws.rs.core.MediaType;
 @RequestScoped
 @Path("buttstock")
 @Produces("application/json")
-
 public class ButtStockView {
-
+    
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.TEXT_PLAIN)
-    public String postButtStock(ButtStock b) {
-        return b.getName();
+    @Produces(MediaType.APPLICATION_JSON)
+    public ButtStock postButtStock(ButtStock b) {
+        //@TODO DAO LOGIC HERE
+        return null;
     }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-
     public ArrayList<ButtStock> listButtStock() {
+        //@TODO DAO LOGIC HERE
        return null;
     }
 

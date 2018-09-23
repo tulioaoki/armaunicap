@@ -17,29 +17,28 @@ import javax.ws.rs.core.MediaType;
 @RequestScoped
 @Path("barrel")
 @Produces("application/json")
-
 public class BarrelView {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.APPLICATION_JSON)
     public Barrel postBarrel(Barrel b) {
-        
+        //@TODO DAO LOGIC HERE
         return b;
     }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-
     public ArrayList<Barrel> listBarrel() {
+        //@TODO DAO LOGIC HERE
         return null;
     }
 
     @Path("/{id}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-
     public Barrel detailBarrel() {
+        //@TODO DAO LOGIC HERE
         return null;
     }
 
@@ -49,14 +48,13 @@ public class BarrelView {
     public Barrel updateBarrel(@PathParam("id") String id, Barrel updatedBarrel) throws
             NotFoundException {
         return null;
-// return BarrelDao.updateBarrel(id, updatedBarrel);
+        // return BarrelDao.updateBarrel(id, updatedBarrel);
     }
 
     @Path("/{id}")
     @DELETE
-
     public void deleteBarrel(@PathParam("id") String id) {
-// BarrelDao.deleteBarrel(id);
+        // BarrelDao.deleteBarrel(id);
     }
 
 }

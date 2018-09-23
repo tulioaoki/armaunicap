@@ -14,21 +14,20 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 @RequestScoped
-@Path("Bullet")
+@Path("bullet")
 @Produces("application/json")
-
 public class BulletView {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.TEXT_PLAIN)
-    public String postBullet(Bullet b) {
-        return b.getName();
+    @Produces(MediaType.APPLICATION_JSON)
+    public Bullet postBullet(Bullet b) {
+        //@TODO DAO LOGIC HERE
+        return null;
     }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-
     public ArrayList<Bullet> listBullet() {
        return null;
     }
@@ -42,7 +41,6 @@ public class BulletView {
 
     @Path("/{id}")
     @PUT
-
     public Bullet updateBullet(@PathParam("id") String id, Bullet updatedBullet) throws
             NotFoundException {
         return null;
@@ -51,7 +49,6 @@ public class BulletView {
 
     @Path("/{id}")
     @DELETE
-
     public void deleteBullet(@PathParam("id") String id) {
 // BulletDao.deleteBullet(id);
     }

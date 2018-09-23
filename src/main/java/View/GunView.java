@@ -14,21 +14,19 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 @RequestScoped
-@Path("Gun")
+@Path("gun")
 @Produces("application/json")
-
 public class GunView {
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.APPLICATION_JSON)
     public Gun postGun(Gun b) {
         return b;
     }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-
     public ArrayList<Gun> listGun() {
        return null;
     }
