@@ -14,7 +14,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 @RequestScoped
-@Path("bullet")
+@Path("bullets")
 @Produces("application/json")
 public class BulletView {
 

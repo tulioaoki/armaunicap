@@ -18,20 +18,36 @@ public class SightDao {
     public SightDao() {
     }
     
+    public ArrayList get(){
+        return this.sights;
+    }
+    
     public void insert(Sight s){
         sights.add(s);
     }
     
-    public void getSight(int id){
-        
+    public boolean isIn(int id){
+        return this.getSight(id) != null;
+    }
+    
+    public Sight getSight(int id){
+        for(Sight s: sights){
+            if(s.getId() == id){
+                return s;
+            }
+        }
+        return null;
     }
     
     public void deleteSight(int id){
-        
+        Sight sig = this.getSight(id);
+        sights.remove(sig);
     }
     
-    public void replaceSight(){
-        
+    public void replaceSight(Sight newSight, int id){
+        Sight oldSight = this.getSight(id);
+        int index = sights.indexOf(oldSight);
+        sights.set(index, newSight);
     }
     
 }

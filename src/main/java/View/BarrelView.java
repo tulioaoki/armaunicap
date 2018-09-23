@@ -15,7 +15,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 @RequestScoped
-@Path("barrel")
+@Path("barrels")
 @Produces("application/json")
 public class BarrelView {
 

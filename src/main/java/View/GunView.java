@@ -14,7 +14,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 @RequestScoped
-@Path("gun")
+@Path("guns")
 @Produces("application/json")
 public class GunView {
 
