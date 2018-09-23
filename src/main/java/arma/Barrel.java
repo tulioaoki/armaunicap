@@ -1,6 +1,9 @@
 
 package arma;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  *
  * @author arthur
@@ -11,8 +14,14 @@ public class Barrel extends Item implements Camouflage{
     private int modRange;
     private float weight;
     private String camouflage;
-
-    public Barrel(String name, int modSound, int modRange, float weight, int id) {
+    
+    @JsonCreator
+    public Barrel(
+            @JsonProperty("name") String name, 
+            @JsonProperty("mod-sound") int modSound,
+            @JsonProperty("mod-range") int modRange, 
+            @JsonProperty("weight") float weight,
+            @JsonProperty("id") int id) {
         super(id);
         this.name = name;
         this.modSound = modSound;

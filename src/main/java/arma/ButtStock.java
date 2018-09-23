@@ -1,6 +1,10 @@
 
 package arma;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+
 /**
  *
  * @author arthur
@@ -12,7 +16,13 @@ public class ButtStock extends Item implements Camouflage{
     private float weight;
     private String camouflage;
     
-    public ButtStock(int modRecoil, String name, float weight, int id) {
+    @JsonCreator
+    public ButtStock(
+            @JsonProperty("mod-recoil") int modRecoil,
+            @JsonProperty("name") String name,
+            @JsonProperty("weight") float weight,
+            @JsonProperty("id") int id)
+    {
         super(id);
         this.modRecoil = modRecoil;
         this.name = name;

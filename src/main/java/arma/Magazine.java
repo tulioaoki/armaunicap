@@ -1,6 +1,8 @@
 
 package arma;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 
 /**
@@ -13,8 +15,13 @@ public class Magazine extends Item implements Camouflage{
     private ArrayList<Item> compatibility;
     private Bullet ammo;
     private String camouflage;
-
-    public Magazine(String name, int capacity,int id) {
+    
+    @JsonCreator
+    public Magazine(
+            @JsonProperty("name") String name,
+            @JsonProperty("capacity") int capacity,
+            @JsonProperty("id") int id)
+    {
         super(id);
         this.name = name;
         this.capacity = capacity;

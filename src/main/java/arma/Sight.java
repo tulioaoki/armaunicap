@@ -2,6 +2,7 @@
 package arma;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 
 /**
@@ -20,7 +21,12 @@ public class Sight extends Item implements Camouflage {
     }
     
     @JsonCreator
-    public Sight(String name, int modPrecission, float weight, int id) {
+    public Sight(
+            @JsonProperty("name") String name,
+            @JsonProperty("mod-precission") int modPrecission,
+            @JsonProperty("weight") float weight, 
+            @JsonProperty("id") int id
+    ) {
         super(id);
         this.name = name;
         this.modPrecission = modPrecission;

@@ -1,6 +1,9 @@
 
 package arma;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  *
  * @author arthur
@@ -10,8 +13,15 @@ public class Bullet extends Item{
     private int modDamage;
     private int modSound;
     private float weight;
-
-    public Bullet(String name, int modDamage, int modSound, float weight, int id) {
+    
+    @JsonCreator
+    public Bullet(
+            @JsonProperty("name") String name,
+            @JsonProperty("mod-damage") int modDamage,
+            @JsonProperty("mod-soung") int modSound,
+            @JsonProperty("weight") float weight,
+            @JsonProperty("id") int id) 
+    {
         super(id);
         this.name = name;
         this.modDamage = modDamage;

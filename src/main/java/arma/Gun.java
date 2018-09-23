@@ -1,5 +1,7 @@
 package arma;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 
 public class Gun extends Item implements Camouflage{
@@ -24,7 +26,22 @@ public class Gun extends Item implements Camouflage{
     private ArrayList<Item> compatibility;
     private String camouflage;
     
-    public Gun(String name, int precision, int recoil, int sound, int range, int damage, int capacity, float weight, Sight sight, Magazine magazine, ButtStock buttstock, Barrel barrel, int id) {
+    @JsonCreator
+    public Gun(
+            @JsonProperty("name") String name,
+            @JsonProperty("int") int precision,
+            @JsonProperty("recoil") int recoil,
+            @JsonProperty("sound") int sound,
+            @JsonProperty("range") int range,
+            @JsonProperty("damage") int damage,
+            @JsonProperty("capacity") int capacity,
+            @JsonProperty("weight") float weight,
+            @JsonProperty("sight") Sight sight,
+            @JsonProperty("magazine") Magazine magazine,
+            @JsonProperty("buttstock") ButtStock buttstock,
+            @JsonProperty("barrel") Barrel barrel,
+            @JsonProperty("id") int id)
+    {
         super(id);
         this.name = name;
         

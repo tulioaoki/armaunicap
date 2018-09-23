@@ -20,10 +20,10 @@ public class SightView {
     
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.TEXT_PLAIN)
-    public String postSight(Sight s){
-        Sight si = new Sight("Aaa",1,2,3);
-        return s.getName();
+    @Produces(MediaType.APPLICATION_JSON)
+    public Sight postSight(Sight s){
+        
+        return s;
     }
     
     @GET
