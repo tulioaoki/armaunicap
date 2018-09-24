@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
 
 public class Gun extends Item implements Camouflage{
-
     private String name;
     private int defaultPrecision;
     private int defaultRecoil;
@@ -29,22 +28,20 @@ public class Gun extends Item implements Camouflage{
     @JsonCreator
     public Gun(
             @JsonProperty("name") String name,
-            @JsonProperty("int") int precision,
+            @JsonProperty("precision") int precision,
             @JsonProperty("recoil") int recoil,
             @JsonProperty("sound") int sound,
             @JsonProperty("range") int range,
-            @JsonProperty("damage") int damage,
-            @JsonProperty("capacity") int capacity,
             @JsonProperty("weight") float weight,
-            @JsonProperty("sight") Sight sight,
+            @JsonProperty("barrel") Barrel barrel,
             @JsonProperty("magazine") Magazine magazine,
             @JsonProperty("buttstock") ButtStock buttstock,
-            @JsonProperty("barrel") Barrel barrel,
+            @JsonProperty("sight") Sight sight,
             @JsonProperty("id") int id)
     {
         super(id);
         this.name = name;
-        
+        this.compatibility = new ArrayList();
         if(sight == null){
             System.out.println("O campo sight não foi inicializado");
         }else{
@@ -58,30 +55,26 @@ public class Gun extends Item implements Camouflage{
             this.barrel = barrel;
         }
         if(magazine == null){
-            
-            System.out.println("O campo magazine não foi inicializado");
+            this.damage = 0;
+            this.capacity = 0;
         }else{
-            
+            this.damage = magazine.getAmmo().getModDamage();
+            this.capacity = magazine.getCapacity();
             this.magazine = magazine;
         }
         if(buttstock == null){
-            
             System.out.println("O campo buttstock não foi inicializado");
         }else{
-            
             this.buttstock = buttstock;
         }
-        this.defaultPrecision = precision;
-        this.defaultRecoil = recoil;
-        this.defaultSound = sound;
-        this.defaultRange = range;
-        this.damage = magazine.getAmmo().getModDamage();
-        this.capacity = magazine.getCapacity();
-        this.defaultWeight = weight;
+        this.defaultPrecision = this.precision = precision;
+        this.defaultRecoil = this.recoil = recoil;
+        this.defaultSound = this.sound = sound;
+        this.defaultRange = this.range = range;
+        this.defaultWeight = this.weight = weight;
     }
 
     public Gun(int id, String name) {
-
         super(id);
         this.name = name;
     }
@@ -259,7 +252,9 @@ public class Gun extends Item implements Camouflage{
                 .append(" Weight: ")
                 .append(this.weight)
                 .append(" Camouflage: ")
-                .append(this.camouflage);
+                .append(this.camouflage)
+                .append("BARREL: ")
+                .append(this.barrel);
         return sb.toString();
     }
 }

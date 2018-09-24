@@ -36,12 +36,15 @@ public class BarrelView {
     @Path("/{id}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
     public Barrel detailBarrel(@PathParam("id") String id) {
         return controller.getById(id);
     }
 
     @Path("/{id}")
     @PUT
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
     public Barrel updateBarrel(@PathParam("id") String id, Barrel updatedBarrel) throws NotFoundException {
         updatedBarrel.setId(id);
         return controller.updateBarrel(updatedBarrel);
@@ -49,18 +52,24 @@ public class BarrelView {
     
     @Path("/{id}/remove-style")
     @PUT
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
     public Barrel delStyle(@PathParam("id") String id) throws NotFoundException {
         return controller.delStyle(id);
     }
 
     @Path("/{id}")
     @DELETE
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
     public void deleteBarrel(@PathParam("id") String id) {
          controller.removeBarrel(id);
     }
     
     @Path("/{id}/put-style/{style}")
     @PUT
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
     public Barrel addStyle(@PathParam("id") String id,@PathParam("style") String style) throws NotFoundException {
         return controller.putStyle(id, style);
     }

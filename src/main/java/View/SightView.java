@@ -37,6 +37,7 @@ public class SightView {
     @Path("/{id}/")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
     public Sight detailSight(@PathParam("id") String id) throws NotFoundException{
         return controller.getById(id);
     }
@@ -44,6 +45,8 @@ public class SightView {
     
     @Path("/{id}")
     @PUT
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
     public Sight updateSight(@PathParam("id") String id, Sight updatedSight) throws NotFoundException {
         updatedSight.setId(id);
         return controller.updateSight(updatedSight);
@@ -51,18 +54,24 @@ public class SightView {
 
     @Path("/{id}")
     @DELETE
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
     public void deleteSight(@PathParam("id") String id) {
         controller.removeSight(id);
     }
     
     @Path("/{id}/put-style/{style}")
     @PUT
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
     public Sight addStyle(@PathParam("id") String id,@PathParam("style") String style) throws NotFoundException {
         return controller.putStyle(id, style);
     }
     
     @Path("/{id}/remove-style")
     @PUT
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
     public Sight delStyle(@PathParam("id") String id) throws NotFoundException {
         return controller.delStyle(id);
     }

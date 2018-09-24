@@ -172,7 +172,7 @@ public class GunController {
             g = Integer.parseInt(id);
             it = dao.getBarrel(i);
             gun = dao.getGun(g);
-            gun = gun.setBarrel(it);
+            gun.setBarrel(it);
             dao.replaceGun(gun, g);
             return gun;
         }catch(NumberFormatException e){

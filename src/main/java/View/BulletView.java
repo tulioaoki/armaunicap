@@ -37,12 +37,15 @@ public class BulletView {
     @Path("/{id}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
     public Bullet detailBullet(@PathParam("id") String id) {
         return controller.getById(id);
     }
 
     @Path("/{id}")
     @PUT
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
     public Bullet updateBullet(@PathParam("id") String id, Bullet updatedBullet) throws NotFoundException {
         updatedBullet.setId(id);
         return controller.updateBullet(updatedBullet);
@@ -50,6 +53,8 @@ public class BulletView {
 
     @Path("/{id}")
     @DELETE
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
     public void deleteBullet(@PathParam("id") String id) {
         controller.removeBullet(id);
     }
