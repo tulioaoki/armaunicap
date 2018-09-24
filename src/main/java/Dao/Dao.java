@@ -36,7 +36,7 @@ public class Dao {
         return mInstance;
     }
     
-    public Dao() {
+    private Dao() {
         sights = new ArrayList();
         barrels = new ArrayList();
         bullets = new ArrayList();
@@ -67,7 +67,7 @@ public class Dao {
         return null;
     }
 
-    public void deleteSight(int id) {
+    public void removeSight(int id) {
         Sight sig = this.getSight(id);
         sights.remove(sig);
     }
