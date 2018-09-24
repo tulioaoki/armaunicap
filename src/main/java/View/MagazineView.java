@@ -1,10 +1,9 @@
 package View;
+import Controller.MagazineController;
 import arma.Magazine;
-import Dao.Dao;
 import java.util.ArrayList;
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.context.RequestScoped;
-import javax.websocket.server.PathParam;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -19,45 +18,70 @@ import javax.ws.rs.core.MediaType;
 @Path("magazines")
 @Produces("application/json")
 public class MagazineView {
-    
-    private Dao d = Dao.getInstance();
-
+   
+    MagazineController controller = new MagazineController();
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Magazine postMagazine(Magazine b) {
-        d.getMagazines().add(b);
-        return b;
+        return controller.createMagazine(b);
     }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public ArrayList<Magazine> listMagazine() {
-       return d.getMagazines();
+       return controller.getMagazines();
     }
 
     @Path("/{id}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Magazine detailMagazine() {
-        return null;
+    public Magazine detailMagazine(@PathParam("id") String id) {
+        return controller.getById(id);
     }
 
     @Path("/{id}")
     @PUT
-
-    public Magazine updateMagazine(@PathParam("id") String id, Magazine updatedMagazine) throws
-            NotFoundException {
-        return null;
-// return MagazineDao.updateMagazine(id, updatedMagazine);
+    public Magazine updateMagazine(@PathParam("id") String id, Magazine updatedMagazine) throws NotFoundException {
+        updatedMagazine.setId(id);
+        return controller.updateMagazine(updatedMagazine);
+    }
+    
+    @Path("/{id}/add-compatibility/{bullet}")
+    @PUT
+    public Magazine addCompatibility(@PathParam("id") String id,@PathParam("bullet") String bullet) throws NotFoundException {
+        return controller.addCompatibility(id, bullet);
+    }
+    
+    @Path("/{id}/load/{bullet}")
+    @PUT
+    public Magazine load(@PathParam("id") String id,@PathParam("bullet") String bullet) throws NotFoundException {
+        return controller.load(id, bullet);
+    }
+    
+    @Path("/{id}/unload")
+    @PUT
+    public Magazine unload(@PathParam("id") String id) throws NotFoundException {
+        return controller.unload(id);
+    }
+    
+    @Path("/{id}/put-style/{style}")
+    @PUT
+    public Magazine addStyle(@PathParam("id") String id,@PathParam("style") String style) throws NotFoundException {
+        return controller.putStyle(id, style);
     }
 
+    @Path("/{id}/remove-style")
+    @PUT
+    public Magazine delStyle(@PathParam("id") String id) throws NotFoundException {
+        return controller.delStyle(id);
+    }
+    
     @Path("/{id}")
     @DELETE
-
     public void deleteMagazine(@PathParam("id") String id) {
-// MagazineDao.deleteMagazine(id);
+        controller.removeMagazine(id);
     }
 
 }

@@ -1,8 +1,9 @@
 package View;
+import Controller.BulletController;
 import arma.Bullet;
 import java.util.ArrayList;
 import javax.enterprise.context.RequestScoped;
-import javax.websocket.server.PathParam;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -17,40 +18,40 @@ import javax.ws.rs.core.MediaType;
 @Path("bullets")
 @Produces("application/json")
 public class BulletView {
-
+    
+    BulletController controller = new BulletController();
+    
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Bullet postBullet(Bullet b) {
-        //@TODO DAO LOGIC HERE
-        return null;
+        return controller.createBullet(b);
     }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public ArrayList<Bullet> listBullet() {
-       return null;
+       return controller.getBullets();
     }
 
     @Path("/{id}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Bullet detailBullet() {
-        return null;
+    public Bullet detailBullet(@PathParam("id") String id) {
+        return controller.getById(id);
     }
 
     @Path("/{id}")
     @PUT
-    public Bullet updateBullet(@PathParam("id") String id, Bullet updatedBullet) throws
-            NotFoundException {
-        return null;
-// return BulletDao.updateBullet(id, updatedBullet);
+    public Bullet updateBullet(@PathParam("id") String id, Bullet updatedBullet) throws NotFoundException {
+        updatedBullet.setId(id);
+        return controller.updateBullet(updatedBullet);
     }
 
     @Path("/{id}")
     @DELETE
     public void deleteBullet(@PathParam("id") String id) {
-// BulletDao.deleteBullet(id);
+        controller.removeBullet(id);
     }
 
 }

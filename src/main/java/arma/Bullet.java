@@ -18,7 +18,7 @@ public class Bullet extends Item{
     public Bullet(
             @JsonProperty("name") String name,
             @JsonProperty("mod-damage") int modDamage,
-            @JsonProperty("mod-soung") int modSound,
+            @JsonProperty("mod-sound") int modSound,
             @JsonProperty("weight") float weight,
             @JsonProperty("id") int id) 
     {

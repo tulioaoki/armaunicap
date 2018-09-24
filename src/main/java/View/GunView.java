@@ -2,7 +2,7 @@ package View;
 import arma.Gun;
 import java.util.ArrayList;
 import javax.enterprise.context.RequestScoped;
-import javax.websocket.server.PathParam;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -34,24 +34,34 @@ public class GunView {
     @Path("/{id}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Gun detailGun() {
-        return null;
+    public Gun detailGun(@PathParam("id") String id) {
+        return controller.getById(id);
     }
 
     @Path("/{id}")
     @PUT
 
-    public Gun updateGun(@PathParam("id") String id, Gun updatedGun) throws
-            NotFoundException {
-        return null;
-// return GunDao.updateGun(id, updatedGun);
+    public Gun updateGun(@PathParam("id") String id, Gun updatedGun) throws NotFoundException {
+        updatedGun.setId(id);
+        return controller.updateGun(updatedGun);
     }
 
     @Path("/{id}")
     @DELETE
-
     public void deleteGun(@PathParam("id") String id) {
-// GunDao.deleteGun(id);
+        controller.removeSight(id);
+    }
+    
+    @Path("/{id}/put-style/{style}")
+    @PUT
+    public Gun addStyle(@PathParam("id") String id,@PathParam("style") String style) throws NotFoundException {
+        return controller.putStyle(id, style);
+    }
+    
+    @Path("/{id}/remove-style")
+    @PUT
+    public Gun delStyle(@PathParam("id") String id) throws NotFoundException {
+        return controller.delStyle(id);
     }
 
 }

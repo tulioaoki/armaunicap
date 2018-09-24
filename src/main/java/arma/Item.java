@@ -1,8 +1,9 @@
 package arma;
 
 import java.util.ArrayList;
+import javax.enterprise.context.ApplicationScoped;
 
-
+@ApplicationScoped
 public class Item {
     private int id;
 
@@ -16,6 +17,17 @@ public class Item {
 
     public void setId(int id) {
         this.id = id;
+    }
+    
+    public void setId(String id) {
+        int i;
+        try{
+            i = Integer.parseInt(id);
+            this.id = i;
+        }catch(NumberFormatException e){
+            return;
+        } 
+        
     }
     
     public Boolean compatible(ArrayList l){

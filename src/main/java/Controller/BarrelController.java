@@ -31,7 +31,53 @@ public class BarrelController {
         return dao.getBarrels();
     }
     
-    public void removeBarrel(Integer id){
-        dao.removeBarrel(id);
+    public void removeBarrel(String id){
+        int i;
+        try{
+            i = Integer.parseInt(id);
+            dao.removeBarrel(i);
+        }catch(NumberFormatException e){
+            return;
+        }
     }
+    
+    public Barrel getById(String id) {
+        int i;
+        try{
+            i = Integer.parseInt(id);
+            return dao.getBarrel(i);
+        }catch(NumberFormatException e){
+            return null;
+        }
+        
+    }
+    
+    public Barrel putStyle(String id, String style) {
+        int i;
+        Barrel m;
+        try{
+            i = Integer.parseInt(id);
+            m = dao.getBarrel(i);
+            m.putStyle(style);
+            dao.replaceBarrel(m, i);
+            return m;
+        }catch(NumberFormatException e){
+            return null;
+        }
+    }
+    
+    public Barrel delStyle(String id) {
+        int i;
+        Barrel m;
+        try{
+            i = Integer.parseInt(id);
+            m = dao.getBarrel(i);
+            m.removeStyle();
+            dao.replaceBarrel(m, i);
+            return m;
+        }catch(NumberFormatException e){
+            return null;
+        }
+    }
+    
 }

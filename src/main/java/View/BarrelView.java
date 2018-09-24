@@ -1,8 +1,9 @@
-/**package View;
+package View;
+import Controller.BarrelController;
 import arma.Barrel;
 import java.util.ArrayList;
 import javax.enterprise.context.RequestScoped;
-import javax.websocket.server.PathParam;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -35,23 +36,33 @@ public class BarrelView {
     @Path("/{id}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Barrel detailBarrel() {
-        //@TODO DAO LOGIC HERE
-        return null;
+    public Barrel detailBarrel(@PathParam("id") String id) {
+        return controller.getById(id);
     }
 
     @Path("/{id}")
     @PUT
-    public Barrel updateBarrel(@PathParam("id") Integer id, Barrel updatedBarrel) throws NotFoundException {
+    public Barrel updateBarrel(@PathParam("id") String id, Barrel updatedBarrel) throws NotFoundException {
         updatedBarrel.setId(id);
-        return controller.updateSight(updatedBarrel);
+        return controller.updateBarrel(updatedBarrel);
+    }
+    
+    @Path("/{id}/remove-style")
+    @PUT
+    public Barrel delStyle(@PathParam("id") String id) throws NotFoundException {
+        return controller.delStyle(id);
     }
 
     @Path("/{id}")
     @DELETE
     public void deleteBarrel(@PathParam("id") String id) {
-        // BarrelDao.deleteBarrel(id);
+         controller.removeBarrel(id);
     }
-
+    
+    @Path("/{id}/put-style/{style}")
+    @PUT
+    public Barrel addStyle(@PathParam("id") String id,@PathParam("style") String style) throws NotFoundException {
+        return controller.putStyle(id, style);
+    }
+    
 }
-**/

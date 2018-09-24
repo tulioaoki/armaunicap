@@ -3,7 +3,6 @@ package arma;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import Dao.Dao;
 import java.util.ArrayList;
 import javax.enterprise.context.ApplicationScoped;
 
@@ -11,7 +10,6 @@ import javax.enterprise.context.ApplicationScoped;
  *
  * @author arthur
  */
-
 @ApplicationScoped
 public class Magazine extends Item implements Camouflage{
     private String name;

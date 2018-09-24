@@ -31,7 +31,52 @@ public class ButtStockController {
         return dao.getButtStocks();
     }
     
-    public void removeButtStock(Integer id){
-        dao.removeButtStock(id);
+    public ButtStock getById(String id) {
+        int i;
+        try{
+            i = Integer.parseInt(id);
+            return dao.getButtStock(i);
+        }catch(NumberFormatException e){
+            return null;
+        }
+        
+    }
+    
+    public void removeButtStock(String id){
+        int i;
+        try{
+            i = Integer.parseInt(id);
+            dao.removeButtStock(i);
+        }catch(NumberFormatException e){
+            return;
+        }   
+    }
+    
+    public ButtStock putStyle(String id, String style) {
+        int i;
+        ButtStock m;
+        try{
+            i = Integer.parseInt(id);
+            m = dao.getButtStock(i);
+            m.putStyle(style);
+            dao.replaceButtStock(m, i);
+            return m;
+        }catch(NumberFormatException e){
+            return null;
+        }
+    }
+    
+    public ButtStock delStyle(String id) {
+        int i;
+        ButtStock m;
+        try{
+            i = Integer.parseInt(id);
+            m = dao.getButtStock(i);
+            m.removeStyle();
+            dao.replaceButtStock(m, i);
+            return m;
+        }catch(NumberFormatException e){
+            return null;
+        }
     }
 }

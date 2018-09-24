@@ -1,8 +1,9 @@
 package View;
+import Controller.ButtStockController;
 import arma.ButtStock;
 import java.util.ArrayList;
 import javax.enterprise.context.RequestScoped;
-import javax.websocket.server.PathParam;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -17,43 +18,50 @@ import javax.ws.rs.core.MediaType;
 @Path("buttstocks")
 @Produces("application/json")
 public class ButtStockView {
+    ButtStockController controller = new ButtStockController();
     
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public ButtStock postButtStock(ButtStock b) {
-        //@TODO DAO LOGIC HERE
-        return null;
+        return controller.createButtStock(b);
     }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public ArrayList<ButtStock> listButtStock() {
-        //@TODO DAO LOGIC HERE
-       return null;
+        return controller.getButtStocks();
     }
 
     @Path("/{id}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public ButtStock detailButtStock() {
-        return null;
+    public ButtStock detailButtStock(@PathParam("id") String id) {
+        return controller.getById(id);
     }
 
     @Path("/{id}")
     @PUT
-
-    public ButtStock updateButtStock(@PathParam("id") String id, ButtStock updatedButtStock) throws
-            NotFoundException {
-        return null;
-// return ButtStockDao.updateButtStock(id, updatedButtStock);
+    public ButtStock updateButtStock(@PathParam("id") String id, ButtStock updatedButtStock) throws NotFoundException {
+        return controller.updateButtStock(updatedButtStock);
     }
-
+    
+    @Path("/{id}/remove-style")
+    @PUT
+    public ButtStock delStyle(@PathParam("id") String id) throws NotFoundException {
+        return controller.delStyle(id);
+    }
+    
     @Path("/{id}")
     @DELETE
-
     public void deleteButtStock(@PathParam("id") String id) {
-// ButtStockDao.deleteButtStock(id);
+        controller.removeButtStock(id);
+    }
+    
+    @Path("/{id}/put-style/{style}")
+    @PUT
+    public ButtStock addStyle(@PathParam("id") String id,@PathParam("style") String style) throws NotFoundException {
+        return controller.putStyle(id, style);
     }
 
 }
