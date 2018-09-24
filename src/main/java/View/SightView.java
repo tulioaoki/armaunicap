@@ -12,7 +12,6 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-
 import Dao.SightDao;
 import Dao.Dao;
 
@@ -50,7 +49,7 @@ public class SightView {
     @Path("/{id}")
     @PUT
     public Sight updateSight(@PathParam("id") String id, Sight updatedSight) throws NotFoundException {
-        return null;
+        return updatedSight;
         //return sightDao.updateSight(id, updatedSight);
     }
 
