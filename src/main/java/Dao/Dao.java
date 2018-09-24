@@ -98,12 +98,12 @@ public ArrayList getMagazines() {
         return null;
     }
 
-    public void RemoveMagazine(int id) {
+    public void removeMagazine(int id) {
         Magazine mag = this.getMagazine(id);
         magazines.remove(mag);
     }
 
-    public void replaceMagazines(Magazine newMagazines, int id) {
+    public void replaceMagazine(Magazine newMagazines, int id) {
         Magazine oldMagazines = this.getMagazine(id);
         int index = magazines.indexOf(oldMagazines);
         magazines.set(index, newMagazines);
@@ -132,7 +132,7 @@ public ArrayList getBullets() {
         return null;
     }
 
-    public void RemoveBullet(int id) {
+    public void removeBullet(int id) {
         Bullet mag = this.getBullet(id);
         bullets.remove(mag);
     }
@@ -168,7 +168,7 @@ public ArrayList getBullets() {
         return null;
     }
 
-    public void RemoveBarrel(int id) {
+    public void removeBarrel(int id) {
         Barrel mag = this.getBarrel(id);
         barrels.remove(mag);
     }
@@ -202,12 +202,12 @@ public ArrayList getBullets() {
         return null;
     }
 
-    public void RemoveButtStock(int id) {
+    public void removeButtStock(int id) {
         ButtStock mag = this.getButtStock(id);
         buttstocks.remove(mag);
     }
 
-    public void replaceButtStocks(ButtStock newButtStocks, int id) {
+    public void replaceButtStock(ButtStock newButtStocks, int id) {
         ButtStock oldButtStocks = this.getButtStock(id);
         int index = buttstocks.indexOf(oldButtStocks);
         buttstocks.set(index, newButtStocks);
