@@ -173,7 +173,7 @@ public ArrayList getBullets() {
         barrels.remove(mag);
     }
 
-    public void replaceBarrels(Barrel newBarrels, int id) {
+    public void replaceBarrel(Barrel newBarrels, int id) {
         Barrel oldBarrels = this.getBarrel(id);
         int index = barrels.indexOf(oldBarrels);
         barrels.set(index, newBarrels);
