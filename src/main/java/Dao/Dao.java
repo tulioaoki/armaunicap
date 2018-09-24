@@ -137,7 +137,7 @@ public ArrayList getBullets() {
         bullets.remove(mag);
     }
 
-    public void replaceBullets(Bullet newBullets, int id) {
+    public void replaceBullet(Bullet newBullets, int id) {
         Bullet oldBullets = this.getBullet(id);
         int index = bullets.indexOf(oldBullets);
         bullets.set(index, newBullets);
