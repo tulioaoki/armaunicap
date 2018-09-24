@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package dao;
+package Dao;
 
 
 import arma.Barrel;
@@ -20,8 +20,8 @@ import javax.enterprise.context.ApplicationScoped;
  * @author tulioaoki
  */
 @ApplicationScoped
-public class dao {
-    private static dao mInstance;
+public class Dao {
+    private static Dao mInstance;
     private final ArrayList<Sight> sights;
     private final ArrayList<Barrel> barrels;    
     private final ArrayList<Bullet> bullets;
@@ -29,12 +29,12 @@ public class dao {
     private final ArrayList<Magazine> magazines;
     private final ArrayList<Gun> guns;
     
-    public static dao getInstance() {
-        if(mInstance == null) mInstance = new dao();
+    public static Dao getInstance() {
+        if(mInstance == null) mInstance = new Dao();
         return mInstance;
     }
     
-    private dao() {
+    private Dao() {
         sights = new ArrayList();
         barrels = new ArrayList();
         bullets = new ArrayList();

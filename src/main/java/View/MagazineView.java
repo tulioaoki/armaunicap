@@ -1,6 +1,6 @@
 package View;
 import arma.Magazine;
-import dao.dao;
+import Dao.Dao;
 import java.util.ArrayList;
 import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
@@ -20,7 +20,7 @@ import javax.ws.rs.core.MediaType;
 @Produces("application/json")
 public class MagazineView {
     
-    private dao d = dao.getInstance();
+    private Dao d = Dao.getInstance();
 
 
     @POST

@@ -13,15 +13,14 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import dao.SightDao;
-import dao.dao;
-import javax.enterprise.context.ApplicationScoped;
+import Dao.SightDao;
+import Dao.Dao;
 
-@ApplicationScoped
+@RequestScoped
 @Path("sights")
 @Produces("application/json")
 public class SightView {
-    private dao d = dao.getInstance();
+    private Dao d = Dao.getInstance();
     private SightDao sights = new SightDao();
     
     @POST

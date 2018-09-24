@@ -3,7 +3,7 @@ package arma;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import dao.dao;
+import Dao.Dao;
 import java.util.ArrayList;
 import javax.enterprise.context.ApplicationScoped;
 
