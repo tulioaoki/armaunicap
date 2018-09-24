@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Dao;
 
 import arma.Barrel;
@@ -15,27 +10,29 @@ import java.util.ArrayList;
 import javax.enterprise.context.ApplicationScoped;
 
 /**
- *
- * @author tulioaoki
- */
+@author tulioaoki
+**/
+
 @ApplicationScoped
+
 public class Dao {
 
     private static Dao mInstance;
-    private final ArrayList<Sight> sights;
-    private final ArrayList<Barrel> barrels;
-    private final ArrayList<Bullet> bullets;
-    private final ArrayList<ButtStock> buttstocks;
-    private final ArrayList<Magazine> magazines;
-    private final ArrayList<Gun> guns;
+    private final ArrayList< Sight> sights;
+    private final ArrayList< Barrel> barrels;
+    private final ArrayList< Bullet> bullets;
+    private final ArrayList< ButtStock> buttstocks;
+    private final ArrayList< Magazine> magazines;
+    private final ArrayList< Gun> guns;
 
     public static Dao getInstance() {
         if (mInstance == null) {
             mInstance = new Dao();
         }
+
         return mInstance;
     }
-    
+
     private Dao() {
         sights = new ArrayList();
         barrels = new ArrayList();
@@ -45,7 +42,7 @@ public class Dao {
         guns = new ArrayList();
     }
 
-    // SIGHTS**************************
+// SIGHTS ** ** ** ** ** ** ** ** ** ** ** ** **
     public ArrayList getSights() {
         return this.sights;
     }
@@ -78,9 +75,9 @@ public class Dao {
         sights.set(index, newSight);
     }
 
-    //END SIGHTS *********************
-    //MAGAZINES******************
-    public ArrayList getMagazines() {
+// END SIGHTS  ** ** ** ** ** ** ** ** ** *
+// MAGAZINES ** ** ** ** ** ** ** ** **
+public ArrayList getMagazines() {
         return this.magazines;
     }
 
@@ -101,7 +98,7 @@ public class Dao {
         return null;
     }
 
-    public void deleteMagazine(int id) {
+    public void RemoveMagazine(int id) {
         Magazine mag = this.getMagazine(id);
         magazines.remove(mag);
     }
@@ -112,13 +109,13 @@ public class Dao {
         magazines.set(index, newMagazines);
     }
 
-    //END MAGAZINES**************
-    //BULLETS *********
-    public ArrayList getBullets() {
+// END MAGAZINES** ** ** ** ** ** **
+// BULLETS ** ** ** ** *
+public ArrayList getBullets() {
         return this.bullets;
     }
 
-    public void insertBullet(Bullet s) {
+    public void  insertBullet(Bullet s) {
         bullets.add(s);
     }
 
@@ -135,7 +132,7 @@ public class Dao {
         return null;
     }
 
-    public void deleteBullet(int id) {
+    public void RemoveBullet(int id) {
         Bullet mag = this.getBullet(id);
         bullets.remove(mag);
     }
@@ -145,9 +142,11 @@ public class Dao {
         int index = bullets.indexOf(oldBullets);
         bullets.set(index, newBullets);
     }
-    //END BULLETS
+// END BULLETS 
 
-    //Barrels ****************
+// Barrels ** ** ** ** ** ** ** **
+
+
     public ArrayList getBarrels() {
         return this.barrels;
     }
@@ -169,7 +168,7 @@ public class Dao {
         return null;
     }
 
-    public void deleteBarrel(int id) {
+    public void RemoveBarrel(int id) {
         Barrel mag = this.getBarrel(id);
         barrels.remove(mag);
     }
@@ -179,10 +178,9 @@ public class Dao {
         int index = barrels.indexOf(oldBarrels);
         barrels.set(index, newBarrels);
     }
-    //END BARRELS********************
+// END BARRELS** ** ** ** ** ** ** ** ** **
 
-    
-    //BUTTSTOCK *********************
+// BUTTSTOCK ** ** ** ** ** ** ** ** ** ** *
     public ArrayList getButtStocks() {
         return this.buttstocks;
     }
@@ -204,7 +202,7 @@ public class Dao {
         return null;
     }
 
-    public void deleteButtStock(int id) {
+    public void RemoveButtStock(int id) {
         ButtStock mag = this.getButtStock(id);
         buttstocks.remove(mag);
     }
@@ -214,6 +212,6 @@ public class Dao {
         int index = buttstocks.indexOf(oldButtStocks);
         buttstocks.set(index, newButtStocks);
     }
-    
-    //END BUTTSTOCK
+
+// END BUTTSTOCK
 }
