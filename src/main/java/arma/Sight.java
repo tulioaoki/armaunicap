@@ -3,12 +3,14 @@ package arma;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import javax.enterprise.context.ApplicationScoped;
 
 
 /**
  *
  * @author arthur
  */
+@ApplicationScoped
 public class Sight extends Item implements Camouflage {
     
     private String name;
@@ -63,7 +65,6 @@ public class Sight extends Item implements Camouflage {
     }
     
     public void removeStyle(){
-        
         if(this.camouflage != null){
             
             this.camouflage = null;

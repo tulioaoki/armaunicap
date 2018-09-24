@@ -14,19 +14,21 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import dao.SightDao;
+import dao.dao;
+import javax.enterprise.context.ApplicationScoped;
 
-@RequestScoped
+@ApplicationScoped
 @Path("sights")
 @Produces("application/json")
 public class SightView {
-    
+    private dao d = dao.getInstance();
     private SightDao sights = new SightDao();
     
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Sight postSight(Sight s){
-        sights.insert(s);
+        d.getSights().add(s);
         return s;
     }
     
@@ -34,13 +36,13 @@ public class SightView {
     @Produces(MediaType.APPLICATION_JSON)
     public ArrayList<Sight> listSight(){
         //@TODO DAO LOGIC HERE
-        return sights.get();
+        return d.getSights();
     }
     
     @Path("/{id}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Sight detailSight(){
+    public Sight detailSight() throws NotFoundException{
         //@TODO DAO LOGIC HERE
         return null;
     }

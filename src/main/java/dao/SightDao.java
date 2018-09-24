@@ -7,14 +7,16 @@ package dao;
 
 import arma.Sight;
 import java.util.ArrayList;
+import javax.enterprise.context.ApplicationScoped;
 
 /**
  *
  * @author tulioaoki
  */
+@ApplicationScoped
 public class SightDao {
+    @ApplicationScoped
     private ArrayList<Sight> sights = new ArrayList();
-
     public SightDao() {
     }
     

@@ -1,6 +1,8 @@
 package View;
 import arma.Magazine;
+import dao.dao;
 import java.util.ArrayList;
+import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.websocket.server.PathParam;
 import javax.ws.rs.Consumes;
@@ -13,22 +15,26 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-@RequestScoped
+@ApplicationScoped
 @Path("magazines")
 @Produces("application/json")
 public class MagazineView {
+    
+    private dao d = dao.getInstance();
+
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Magazine postMagazine(Magazine b) {
-        return null;
+        d.getMagazines().add(b);
+        return b;
     }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public ArrayList<Magazine> listMagazine() {
-       return null;
+       return d.getMagazines();
     }
 
     @Path("/{id}")
