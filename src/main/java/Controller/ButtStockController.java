@@ -5,10 +5,33 @@
  */
 package Controller;
 
+import Dao.Dao;
+import arma.ButtStock;
+import java.util.ArrayList;
+
+
 /**
  *
  * @author zearthur99
  */
 public class ButtStockController {
+    Dao dao = Dao.getInstance();
     
+    public ButtStock createButtStock(ButtStock s){
+        dao.insertButtStock(s);
+        return s;
+    }
+    
+    public ButtStock updateButtStock(ButtStock s){
+        dao.replaceButtStock(s, s.getId());
+        return s;
+    }
+    
+    public ArrayList<ButtStock> getButtStocks(){
+        return dao.getButtStocks();
+    }
+    
+    public void removeButtStock(Integer id){
+        dao.removeButtStock(id);
+    }
 }

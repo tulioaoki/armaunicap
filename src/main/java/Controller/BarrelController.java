@@ -5,10 +5,33 @@
  */
 package Controller;
 
+import Dao.Dao;
+import arma.Barrel;
+import java.util.ArrayList;
+
+
 /**
  *
  * @author zearthur99
  */
 public class BarrelController {
+    Dao dao = Dao.getInstance();
     
+    public Barrel createBarrel(Barrel s){
+        dao.insertBarrel(s);
+        return s;
+    }
+    
+    public Barrel updateBarrel(Barrel s){
+        dao.replaceBarrel(s, s.getId());
+        return s;
+    }
+    
+    public ArrayList<Barrel> getBarrels(){
+        return dao.getBarrels();
+    }
+    
+    public void removeBarrel(Integer id){
+        dao.removeBarrel(id);
+    }
 }
