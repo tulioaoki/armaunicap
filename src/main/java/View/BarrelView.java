@@ -1,5 +1,4 @@
-package View;
-
+/**package View;
 import arma.Barrel;
 import java.util.ArrayList;
 import javax.enterprise.context.RequestScoped;
@@ -18,20 +17,19 @@ import javax.ws.rs.core.MediaType;
 @Path("barrels")
 @Produces("application/json")
 public class BarrelView {
+    BarrelController controller = new BarrelController();
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
     public Barrel postBarrel(Barrel b) {
-        //@TODO DAO LOGIC HERE
-        return b;
+        return controller.createBarrel(b);
     }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public ArrayList<Barrel> listBarrel() {
-        //@TODO DAO LOGIC HERE
-        return null;
+        return controller.getBarrels();
     }
 
     @Path("/{id}")
@@ -44,11 +42,9 @@ public class BarrelView {
 
     @Path("/{id}")
     @PUT
-
-    public Barrel updateBarrel(@PathParam("id") String id, Barrel updatedBarrel) throws
-            NotFoundException {
-        return null;
-        // return BarrelDao.updateBarrel(id, updatedBarrel);
+    public Barrel updateBarrel(@PathParam("id") Integer id, Barrel updatedBarrel) throws NotFoundException {
+        updatedBarrel.setId(id);
+        return controller.updateSight(updatedBarrel);
     }
 
     @Path("/{id}")
@@ -58,3 +54,4 @@ public class BarrelView {
     }
 
 }
+**/

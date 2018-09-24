@@ -14,15 +14,12 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
-import Dao.Dao;
-
 @RequestScoped
 @Path("sights")
 @Produces("application/json")
 public class SightView {
     
     SightController controller = new SightController();
-    
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
@@ -49,8 +46,7 @@ public class SightView {
     @PUT
     public Sight updateSight(@PathParam("id") Integer id, Sight updatedSight) throws NotFoundException {
         updatedSight.setId(id);
-        controller.updateSight(updatedSight);
-        return null;
+        return controller.updateSight(updatedSight);
     }
 
     @Path("/{id}")
