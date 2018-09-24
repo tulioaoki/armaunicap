@@ -3,7 +3,9 @@ package arma;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.ArrayList;
+import javax.enterprise.context.ApplicationScoped;
 
+@ApplicationScoped
 public class Gun extends Item implements Camouflage{
     private String name;
     private int defaultPrecision;
@@ -122,7 +124,6 @@ public class Gun extends Item implements Camouflage{
 
     public Gun setMagazine(Magazine magazine) {
         if (magazine.compatible(compatibility)) {
-
             this.magazine = magazine;
             return recalculate();
 
@@ -173,13 +174,11 @@ public class Gun extends Item implements Camouflage{
             precision = precision + this.sight.getModPrecission();
         }
         if (this.barrel != null) { // Arma também tem um barrel novo
-
             sound = sound + this.barrel.getModSound();
             weight = weight + this.barrel.getWeight();
             range = range + this.barrel.getModRange();
         }
         if (this.magazine != null) { // Arma também tem um maganize novo
-
             this.capacity = this.magazine.getCapacity();
             weight = weight + (this.magazine.getCapacity() * this.magazine.getAmmo().getWeight());
             this.damage = this.magazine.getAmmo().getModDamage();
@@ -227,6 +226,24 @@ public class Gun extends Item implements Camouflage{
     public void setName(String name) {
         this.name = name;
     }
+
+    public Sight getSight() {
+        return sight;
+    }
+
+    public Magazine getMagazine() {
+        return magazine;
+    }
+
+    public ButtStock getButtstock() {
+        return buttstock;
+    }
+
+    public Barrel getBarrel() {
+        return barrel;
+    }
+    
+    
     
    @Override
     public String toString() {
