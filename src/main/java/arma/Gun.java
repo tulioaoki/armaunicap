@@ -114,54 +114,51 @@ public class Gun extends Item implements Camouflage{
         return weight;
     }
 
-    public void setSight(Sight sight) {
+    public Gun setSight(Sight sight) {
 
         if (sight.compatible(compatibility)) {
 
             this.sight = sight;
-            recalculate();
+            return recalculate();
 
         } else {
+            return recalculate();
 
-            System.out.println("This buttstock is not capatible to this gun " + this.name);
         }
     }
 
-    public void setMagazine(Magazine magazine) {
+    public Gun setMagazine(Magazine magazine) {
         if (magazine.compatible(compatibility)) {
 
             this.magazine = magazine;
-            recalculate();
+            return recalculate();
 
         } else {
 
-            System.out.println("This magazine is not capatible to this gun " + this.name);
+            return recalculate();
         }
     }
 
-    public void setButtstock(ButtStock buttstock) {
+    public Gun setButtstock(ButtStock buttstock) {
 
         if (buttstock.compatible(compatibility)) {
 
             this.buttstock = buttstock;
-            recalculate();
+            return recalculate();
 
         } else {
 
-            System.out.println("This buttstock is not capatible to this gun " + this.name);
+            return recalculate();
         }
     }
 
-    public void setBarrel(Barrel barrel) {
+    public Gun setBarrel(Barrel barrel) {
 
         if (barrel.compatible(compatibility)) {
-
             this.barrel = barrel;
-            recalculate();
-
+            return recalculate();
         } else {
-
-            System.out.println("This buttstock is not capatible to this gun " + this.name);
+            return recalculate();
         }
     }
 
@@ -169,7 +166,7 @@ public class Gun extends Item implements Camouflage{
         this.compatibility.add(i);
     }
 
-    public void recalculate() {
+    public Gun recalculate() {
 
         this.weight = defaultWeight;
         this.sound = defaultSound;
@@ -205,7 +202,7 @@ public class Gun extends Item implements Camouflage{
             recoil = recoil + this.buttstock.getModRecoi();
         }
         
-        System.out.println("Precision: " + this.precision + " Recoil: " + this.recoil + " Sound " + this.sound + " Range " + this.range + " Damage " + this.damage + " Capacity: " + this.capacity + " Weight " + this.weight);
+        return this;
     }
     
      public void putStyle(String type){
@@ -229,6 +226,14 @@ public class Gun extends Item implements Camouflage{
        
         return this.camouflage;
     } 
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
     
    @Override
     public String toString() {

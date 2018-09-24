@@ -10,9 +10,9 @@ import java.util.ArrayList;
 import javax.enterprise.context.ApplicationScoped;
 
 /**
-@author tulioaoki
-**/
-
+ * @author tulioaoki
+*
+ */
 @ApplicationScoped
 
 public class Dao {
@@ -77,7 +77,7 @@ public class Dao {
 
 // END SIGHTS  ** ** ** ** ** ** ** ** ** *
 // MAGAZINES ** ** ** ** ** ** ** ** **
-public ArrayList getMagazines() {
+    public ArrayList getMagazines() {
         return this.magazines;
     }
 
@@ -111,11 +111,11 @@ public ArrayList getMagazines() {
 
 // END MAGAZINES** ** ** ** ** ** **
 // BULLETS ** ** ** ** *
-public ArrayList getBullets() {
+    public ArrayList getBullets() {
         return this.bullets;
     }
 
-    public void  insertBullet(Bullet s) {
+    public void insertBullet(Bullet s) {
         bullets.add(s);
     }
 
@@ -145,8 +145,6 @@ public ArrayList getBullets() {
 // END BULLETS 
 
 // Barrels ** ** ** ** ** ** ** **
-
-
     public ArrayList getBarrels() {
         return this.barrels;
     }
@@ -214,4 +212,39 @@ public ArrayList getBullets() {
     }
 
 // END BUTTSTOCK
+    //GUN
+    public ArrayList getGuns() {
+        return this.guns;
+    }
+
+    public void insertGun(Gun s) {
+        guns.add(s);
+    }
+
+    public boolean GunIsIn(int id) {
+        return this.getGun(id) != null;
+    }
+
+    public Gun getGun(int id) {
+        for (Gun m : guns) {
+            if (m.getId() == id) {
+                return m;
+            }
+        }
+        return null;
+    }
+
+    public void removeGun(int id) {
+        Gun mag = this.getGun(id);
+        guns.remove(mag);
+    }
+
+    public void replaceGun(Gun newGuns, int id) {
+        Gun oldGuns = this.getGun(id);
+        int index = guns.indexOf(oldGuns);
+        guns.set(index, newGuns);
+    }
+   
+    
+    //END GUN
 }
