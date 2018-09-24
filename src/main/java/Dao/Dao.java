@@ -34,7 +34,7 @@ public class Dao {
         return mInstance;
     }
     
-    private Dao() {
+    public Dao() {
         sights = new ArrayList();
         barrels = new ArrayList();
         bullets = new ArrayList();
