@@ -232,6 +232,8 @@ public class GunController {
     }
     
     //END PUT ITENS
+    
+    //DEL ITENS
     public Gun delBarrel(String id) {
         int g;
         Gun gun;
@@ -287,8 +289,6 @@ public class GunController {
             return null;
         }
     }
-    //DEL ITENS
-    
     //END
     
     
