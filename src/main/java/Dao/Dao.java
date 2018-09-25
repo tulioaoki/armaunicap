@@ -76,30 +76,19 @@ public class Dao {
 
 // END SIGHTS  ** ** ** ** ** ** ** ** ** *
 // MAGAZINES ** ** ** ** ** ** ** ** **
-    public ArrayList getMagazines() {
-        return this.magazines;
-    }
-
     public void insertMagazine(Magazine s) {
-        magazines.add(s);
+        
     }
 
     public boolean MagazinesIsIn(int id) {
-        return this.getMagazine(id) != null;
     }
 
     public Magazine getMagazine(int id) {
-        for (Magazine m : magazines) {
-            if (m.getId() == id) {
-                return m;
-            }
-        }
-        return null;
+        
     }
 
     public void removeMagazine(int id) {
-        Magazine mag = this.getMagazine(id);
-        magazines.remove(mag);
+        
     }
 
     public void replaceMagazine(Magazine newMagazines, int id) {

@@ -5,10 +5,66 @@
  */
 package Dao;
 
+import arma.Magazine;
+import java.util.ArrayList;
+
 /**
  *
  * @author zearthur99
  */
-public class MagazineDao {
+public class MagazineDao implements DaoBridge<Magazine>{
     
+    private final ArrayList<Magazine> db;
+
+    private static MagazineDao instance;
+
+    public static MagazineDao getInstance(){
+        if(instance != null){
+            instance = new MagazineDao();
+        }
+        return instance;
+    }
+    
+    private MagazineDao() {
+        this.db = new ArrayList<>();
+    }
+
+    @Override
+    public ArrayList getList() {
+        return this.db;
+    }
+
+    @Override
+    public void insertItem(Magazine s) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public Magazine getById(int id) {
+        for (Magazine m : db) {
+            if (m.getId() == id) {
+                return m;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public void remove(int id) {
+        Magazine mag = this.getById(id);
+        db.remove(mag);
+    }
+
+    @Override
+    public void replaceItem(Magazine newMagazines, int id) {
+        Magazine oldMagazines = this.getById(id);
+        int index = db.indexOf(oldMagazines);
+        db.set(index, newMagazines);
+    }
+
+    @Override
+    public boolean idExists(int id) {
+        return this.getById(id) != null;
+    }
+
 }
