@@ -60,20 +60,4 @@ public class SightEndpoint {
         controller.removeSight(id);
     }
     
-    @Path("/{id}/put-style/{style}")
-    @PUT
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Sight addStyle(@PathParam("id") String id,@PathParam("style") String style) throws NotFoundException {
-        return controller.putStyle(id, style);
-    }
-    
-    @Path("/{id}/remove-style")
-    @PUT
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Sight delStyle(@PathParam("id") String id) throws NotFoundException {
-        return controller.delStyle(id);
-    }
-    
 }

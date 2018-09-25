@@ -6,12 +6,14 @@
 package Dao;
 
 import java.util.ArrayList;
+import javax.enterprise.context.ApplicationScoped;
 
 /**
  *
  * @author zearthur99
  * @param <T> Tipo do DAOBridge
  */
+@ApplicationScoped
 public interface DaoBridge<T> {
     public ArrayList getList();
     public void insertItem(T s);

@@ -17,6 +17,9 @@ import java.util.ArrayList;
 public class BarrelController {
     private BarrelDao dao = BarrelDao.getInstance();
 
+    public BarrelController() {
+    }
+    
     public Barrel createBarrel(Barrel s){
         dao.insertItem(s);
         return s;

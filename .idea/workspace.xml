@@ -2,50 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="07c07eb5-3da7-4fa2-8933-8950e90db198" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/poo_war.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/poo_war_exploded.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_jackson_core_jackson_annotations_2_8_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_javaee_web_api_7_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/poo.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/BarrelController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/BarrelController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/BulletController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/BulletController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/ButtStockController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/ButtStockController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/GunController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/GunController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/MagazineController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/MagazineController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Controller/SightController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Controller/SightController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Dao/BarrelDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dao/BarrelDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Dao/Dao.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Dao/DaoBridge.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dao/DaoBridge.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Dao/MagazineDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dao/MagazineDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Dao/SightDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Dao/SightDao.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/View/BarrelView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Endpoints/BarrelEndpoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/View/BulletView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Endpoints/BulletEndpoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/View/ButtStockView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Endpoints/ButtStockEndpoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/View/GunView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Endpoints/GunEndpoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/View/MagazineView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Endpoints/MagazineEndpoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/View/SightView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Endpoints/SightEndpoint.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/arma/Gun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arma/Gun.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/arma/Magazine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/arma/Magazine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controller/BarrelController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controller/BarrelController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controller/BulletController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controller/BulletController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controller/ButtStockController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controller/ButtStockController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controller/GunController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controller/GunController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controller/MagazineController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controller/MagazineController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Controller/SightController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/Controller/SightController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/Dao/Dao.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/View/BarrelView.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/View/BulletView.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/View/ButtStockView.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/View/GunView.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/View/MagazineView.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/View/SightView.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/arma/Gun.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/arma/Gun.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/arma/Magazine.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/arma/Magazine.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/rest/RESTApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/rest/RESTApplication.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -58,6 +16,7 @@
     <session id="785340456">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.10" value="1" />
           <entry key="project.opened" value="1" />
         </counts>
@@ -215,7 +174,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1537840510886" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1537841774077" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RunDashboard">
@@ -240,12 +199,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1537839201747</updated>
-      <workItem from="1537839209479" duration="1696000" />
+      <workItem from="1537839209479" duration="2292000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1696000" />
+    <option name="totallyTimeSpent" value="2292000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="260" y="20" width="1400" height="998" extended-state="0" />

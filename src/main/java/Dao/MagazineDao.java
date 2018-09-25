@@ -7,11 +7,13 @@ package Dao;
 
 import arma.Magazine;
 import java.util.ArrayList;
+import javax.enterprise.context.ApplicationScoped;
 
 /**
  *
  * @author zearthur99
  */
+@ApplicationScoped
 public class MagazineDao implements DaoBridge<Magazine>{
     
     private final ArrayList<Magazine> db;
@@ -19,7 +21,7 @@ public class MagazineDao implements DaoBridge<Magazine>{
     private static MagazineDao instance;
 
     public static MagazineDao getInstance(){
-        if(instance != null){
+        if(instance == null){
             instance = new MagazineDao();
         }
         return instance;

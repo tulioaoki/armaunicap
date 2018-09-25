@@ -7,26 +7,26 @@ package Dao;
 
 import arma.Bullet;
 import java.util.ArrayList;
+import javax.enterprise.context.ApplicationScoped;
 
 /**
  *
  * @author tulioaoki
  */
+@ApplicationScoped
 public class BulletDao implements DaoBridge<Bullet> {
-
     private final ArrayList< Bullet> db;
-
     private static BulletDao instance;
 
     public static BulletDao getInstance() {
-        if (instance != null) {
+        if (instance == null) {
             instance = new BulletDao();
         }
         return instance;
     }
 
     private BulletDao() {
-        this.db = new ArrayList<>();
+        this.db = new ArrayList();
     }
 
     @Override

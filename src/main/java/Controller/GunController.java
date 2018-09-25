@@ -20,11 +20,19 @@ import java.util.ArrayList;
 public class GunController {
 
     private GunDao dao = GunDao.getInstance();
-    private BarrelController barrels = new BarrelController();
-    private ButtStockController bt = new ButtStockController();
-    private MagazineController magazines = new MagazineController();
-    private SightController sights = new SightController();
+    private BarrelController barrels;
+    private ButtStockController bt;
+    private MagazineController magazines;
+    private SightController sights;
 
+    public GunController() {
+        barrels = new BarrelController();
+        bt = new ButtStockController();
+        magazines = new MagazineController();
+        sights = new SightController();
+    }
+
+    
     public Gun createGun(Gun s) {
         dao.insertItem(s);
         return s;

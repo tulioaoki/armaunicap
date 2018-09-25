@@ -2,11 +2,13 @@ package Dao;
 import arma.Gun;
 
 import java.util.ArrayList;
+import javax.enterprise.context.ApplicationScoped;
 
 /**
  *
  * @author tulioaoki
  */
+@ApplicationScoped
 public class GunDao implements DaoBridge<Gun> {
 
     private final ArrayList<Gun> db;
@@ -14,7 +16,7 @@ public class GunDao implements DaoBridge<Gun> {
     private static GunDao instance;
 
     public static GunDao getInstance(){
-        if(instance != null){
+        if(instance == null){
             instance = new GunDao();
         }
         return instance;

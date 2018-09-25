@@ -7,11 +7,13 @@ package Dao;
 
 import arma.Barrel;
 import java.util.ArrayList;
+import javax.enterprise.context.ApplicationScoped;
 
 /**
  *
  * @author zearthur99
  */
+@ApplicationScoped
 public class BarrelDao implements DaoBridge<Barrel>{
     
     private final ArrayList<Barrel> db;
@@ -19,7 +21,7 @@ public class BarrelDao implements DaoBridge<Barrel>{
     private static BarrelDao instance;
 
     public static BarrelDao getInstance(){
-        if(instance != null){
+        if(instance == null){
             instance = new BarrelDao();
         }
         return instance;

@@ -17,6 +17,9 @@ import java.util.ArrayList;
 public class ButtStockController {
     private ButtStockDao dao = ButtStockDao.getInstance();
 
+    public ButtStockController() {
+    }
+    
     public ButtStock createButtStock(ButtStock s){
         dao.insertItem(s);
         return s;

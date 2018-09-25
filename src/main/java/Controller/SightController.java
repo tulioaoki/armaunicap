@@ -2,14 +2,19 @@ package Controller;
 import Dao.SightDao;
 import arma.Sight;
 import java.util.ArrayList;
+import javax.enterprise.context.ApplicationScoped;
 
 
 /**
  *
  * @author zearthur99
  */
+@ApplicationScoped
 public class SightController {
     private SightDao dao = SightDao.getInstance();
+
+    public SightController() {
+    }
     
     public Sight createSight(Sight s){
         dao.insertItem(s);
@@ -45,33 +50,4 @@ public class SightController {
         }
         
     }
-    
-    public Sight putStyle(String id, String style) {
-        int i;
-        Sight m;
-        try{
-            i = Integer.parseInt(id);
-            m = dao.getById(i);
-            m.putStyle(style);
-            dao.replaceItem(m, i);
-            return m;
-        }catch(NumberFormatException e){
-            return null;
-        }
-    }
-    
-    public Sight delStyle(String id) {
-        int i;
-        Sight m;
-        try{
-            i = Integer.parseInt(id);
-            m = dao.getById(i);
-            m.removeStyle();
-            dao.replaceItem(m, i);
-            return m;
-        }catch(NumberFormatException e){
-            return null;
-        }
-    }
-    
 }

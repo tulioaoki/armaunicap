@@ -7,11 +7,13 @@ package Dao;
 
 import arma.ButtStock;
 import java.util.ArrayList;
+import javax.enterprise.context.ApplicationScoped;
 
 /**
  *
  * @author tulioaoki
  */
+@ApplicationScoped
 public class ButtStockDao implements DaoBridge<ButtStock> {
 
     private final ArrayList< ButtStock> db;
@@ -20,7 +22,7 @@ public class ButtStockDao implements DaoBridge<ButtStock> {
 
     public static ButtStockDao
             getInstance() {
-        if (instance != null) {
+        if (instance == null) {
             instance = new ButtStockDao();
         }
         return instance;

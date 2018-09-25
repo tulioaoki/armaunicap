@@ -9,9 +9,10 @@ import java.util.ArrayList;
  *
  * @author zearthur99
  */
-public class BulletController {
-    private BulletDao dao = BulletDao.getInstance();
 
+public class BulletController {
+    private final BulletDao dao = BulletDao.getInstance();
+    
     public Bullet createBullet(Bullet s){
         dao.insertItem(s);
         return s;
@@ -22,7 +23,7 @@ public class BulletController {
         return s;
     }
 
-    public ArrayList<Bullet> getBullets(){
+    public ArrayList getBullets(){
         return dao.getList();
     }
 
@@ -32,7 +33,6 @@ public class BulletController {
             i = Integer.parseInt(id);
             dao.remove(i);
         }catch(NumberFormatException e){
-            return;
         }
     }
 

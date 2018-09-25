@@ -7,19 +7,19 @@ package Dao;
 
 import arma.Sight;
 import java.util.ArrayList;
+import javax.enterprise.context.ApplicationScoped;
 
 /**
  *
  * @author zearthur99
  */
+@ApplicationScoped
 public class SightDao implements DaoBridge<Sight>{
-    
     private final ArrayList<Sight> db;
-
     private static SightDao instance;
 
     public static SightDao getInstance(){
-        if(instance != null){
+        if(instance == null){
             instance = new SightDao();
         }
         return instance;
