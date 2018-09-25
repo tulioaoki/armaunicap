@@ -65,20 +65,16 @@ public class Magazine extends Item implements Camouflage{
        this.ammo = null;
     }
     
+    @Override
     public void putStyle(String type){
         
         this.camouflage = type;
     }
     
+    @Override
     public void removeStyle(){
-        
         if(this.camouflage != null){
-            
             this.camouflage = null;
-        
-        }else{
-            
-            System.out.println("This magazine has no camouflage.");
         }
     }
     

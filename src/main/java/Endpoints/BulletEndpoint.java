@@ -1,4 +1,4 @@
-package View;
+package Endpoints;
 import Controller.BulletController;
 import arma.Bullet;
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ import javax.ws.rs.core.MediaType;
 @RequestScoped
 @Path("bullets")
 @Produces("application/json")
-public class BulletView {
+public class BulletEndpoint {
     
     BulletController controller = new BulletController();
     

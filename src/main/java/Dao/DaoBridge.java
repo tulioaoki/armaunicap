@@ -5,7 +5,6 @@
  */
 package Dao;
 
-import arma.Magazine;
 import java.util.ArrayList;
 
 /**
@@ -14,16 +13,10 @@ import java.util.ArrayList;
  * @param <T> Tipo do DAOBridge
  */
 public interface DaoBridge<T> {
-    
     public ArrayList getList();
-
     public void insertItem(T s);
-
     public boolean idExists(int id);
-
     public T getById(int id);
-
     public void remove(int id);
-
     public void replaceItem(T newItem, int id);
 }

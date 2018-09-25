@@ -1,6 +1,6 @@
-package View;
-import Controller.BarrelController;
-import arma.Barrel;
+package Endpoints;
+import Controller.ButtStockController;
+import arma.ButtStock;
 import java.util.ArrayList;
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.PathParam;
@@ -15,29 +15,29 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 @RequestScoped
-@Path("barrels")
+@Path("buttstocks")
 @Produces("application/json")
-public class BarrelView {
-    BarrelController controller = new BarrelController();
-
+public class ButtStockEndpoint {
+    ButtStockController controller = new ButtStockController();
+    
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Barrel postBarrel(Barrel b) {
-        return controller.createBarrel(b);
+    public ButtStock postButtStock(ButtStock b) {
+        return controller.createButtStock(b);
     }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public ArrayList<Barrel> listBarrel() {
-        return controller.getBarrels();
+    public ArrayList<ButtStock> listButtStock() {
+        return controller.getButtStocks();
     }
 
     @Path("/{id}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Barrel detailBarrel(@PathParam("id") String id) {
+    public ButtStock detailButtStock(@PathParam("id") String id) {
         return controller.getById(id);
     }
 
@@ -45,33 +45,32 @@ public class BarrelView {
     @PUT
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Barrel updateBarrel(@PathParam("id") String id, Barrel updatedBarrel) throws NotFoundException {
-        updatedBarrel.setId(id);
-        return controller.updateBarrel(updatedBarrel);
+    public ButtStock updateButtStock(@PathParam("id") String id, ButtStock updatedButtStock) throws NotFoundException {
+        return controller.updateButtStock(updatedButtStock);
     }
     
     @Path("/{id}/remove-style")
     @PUT
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Barrel delStyle(@PathParam("id") String id) throws NotFoundException {
+    public ButtStock delStyle(@PathParam("id") String id) throws NotFoundException {
         return controller.delStyle(id);
     }
-
+    
     @Path("/{id}")
     @DELETE
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public void deleteBarrel(@PathParam("id") String id) {
-         controller.removeBarrel(id);
+    public void deleteButtStock(@PathParam("id") String id) {
+        controller.removeButtStock(id);
     }
     
     @Path("/{id}/put-style/{style}")
     @PUT
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Barrel addStyle(@PathParam("id") String id,@PathParam("style") String style) throws NotFoundException {
+    public ButtStock addStyle(@PathParam("id") String id,@PathParam("style") String style) throws NotFoundException {
         return controller.putStyle(id, style);
     }
-    
+
 }

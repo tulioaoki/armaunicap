@@ -1,4 +1,4 @@
-package View;
+package Endpoints;
 import Controller.MagazineController;
 import arma.Magazine;
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ import javax.ws.rs.core.MediaType;
 @ApplicationScoped
 @Path("magazines")
 @Produces("application/json")
-public class MagazineView {
+public class MagazineEndpoint {
    
     MagazineController controller = new MagazineController();
 
@@ -75,22 +75,7 @@ public class MagazineView {
     public Magazine unload(@PathParam("id") String id) throws NotFoundException {
         return controller.unload(id);
     }
-    
-    @Path("/{id}/put-style/{style}")
-    @PUT
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Magazine addStyle(@PathParam("id") String id,@PathParam("style") String style) throws NotFoundException {
-        return controller.putStyle(id, style);
-    }
 
-    @Path("/{id}/remove-style")
-    @PUT
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Magazine delStyle(@PathParam("id") String id) throws NotFoundException {
-        return controller.delStyle(id);
-    }
     
     @Path("/{id}")
     @DELETE

@@ -5,27 +5,27 @@
  */
 package Dao;
 
-import arma.Sight;
+import arma.Bullet;
 import java.util.ArrayList;
 
 /**
  *
- * @author zearthur99
+ * @author tulioaoki
  */
-public class SightDao implements DaoBridge<Sight>{
-    
-    private final ArrayList<Sight> db;
+public class BulletDao implements DaoBridge<Bullet> {
 
-    private static SightDao instance;
+    private final ArrayList< Bullet> db;
 
-    public static SightDao getInstance(){
-        if(instance != null){
-            instance = new SightDao();
+    private static BulletDao instance;
+
+    public static BulletDao getInstance() {
+        if (instance != null) {
+            instance = new BulletDao();
         }
         return instance;
     }
-    
-    private SightDao() {
+
+    private BulletDao() {
         this.db = new ArrayList<>();
     }
 
@@ -35,13 +35,13 @@ public class SightDao implements DaoBridge<Sight>{
     }
 
     @Override
-    public void insertItem(Sight s) {
+    public void insertItem(Bullet s) {
         db.add(s);
     }
 
     @Override
-    public Sight getById(int id) {
-        for (Sight m : db) {
+    public Bullet getById(int id) {
+        for (Bullet m : db) {
             if (m.getId() == id) {
                 return m;
             }
@@ -51,20 +51,19 @@ public class SightDao implements DaoBridge<Sight>{
 
     @Override
     public void remove(int id) {
-        Sight i = this.getById(id);
+        Bullet i = this.getById(id);
         db.remove(i);
     }
 
     @Override
-    public void replaceItem(Sight newSight, int id) {
-        Sight oldSight = this.getById(id);
-        int index = db.indexOf(oldSight);
-        db.set(index, newSight);
+    public void replaceItem(Bullet newBullet, int id) {
+        Bullet oldBullet = this.getById(id);
+        int index = db.indexOf(oldBullet);
+        db.set(index, newBullet);
     }
 
     @Override
     public boolean idExists(int id) {
         return this.getById(id) != null;
     }
-
 }

@@ -36,8 +36,9 @@ public class MagazineDao implements DaoBridge<Magazine>{
 
     @Override
     public void insertItem(Magazine s) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        db.add(s);    
     }
+    
 
     @Override
     public Magazine getById(int id) {

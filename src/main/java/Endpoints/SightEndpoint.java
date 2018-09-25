@@ -1,4 +1,4 @@
-package View;
+package Endpoints;
 import Controller.SightController;
 import arma.Sight;
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ import javax.ws.rs.core.MediaType;
 @RequestScoped
 @Path("sights")
 @Produces("application/json")
-public class SightView {
+public class SightEndpoint {
     
     SightController controller = new SightController();
     

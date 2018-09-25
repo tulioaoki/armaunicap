@@ -44,18 +44,9 @@ public class Gun extends Item implements Camouflage{
         super(id);
         this.name = name;
         this.compatibility = new ArrayList();
-        if(sight == null){
-            System.out.println("O campo sight não foi inicializado");
-        }else{
-            this.sight = sight;
-        }
-        if(barrel == null){
-            
-            System.out.println("O campo barrel não foi inicializado");
-        }else{
-            
-            this.barrel = barrel;
-        }
+        this.sight = sight;
+        this.barrel = barrel;
+        
         if(magazine == null){
             this.damage = 0;
             this.capacity = 0;
@@ -64,11 +55,8 @@ public class Gun extends Item implements Camouflage{
             this.capacity = magazine.getCapacity();
             this.magazine = magazine;
         }
-        if(buttstock == null){
-            System.out.println("O campo buttstock não foi inicializado");
-        }else{
-            this.buttstock = buttstock;
-        }
+        
+        this.buttstock = buttstock;
         this.defaultPrecision = this.precision = precision;
         this.defaultRecoil = this.recoil = recoil;
         this.defaultSound = this.sound = sound;
@@ -169,7 +157,6 @@ public class Gun extends Item implements Camouflage{
         this.recoil = defaultRecoil;
 
         if (this.sight != null) { // Arma tem um sight novo
-
             weight = weight + this.sight.getWeight();
             precision = precision + this.sight.getModPrecission();
         }
@@ -184,36 +171,29 @@ public class Gun extends Item implements Camouflage{
             this.damage = this.magazine.getAmmo().getModDamage();
             sound = sound + this.magazine.getAmmo().getModSound();
         } else {
-
             this.capacity = 0;
             this.damage = 0;
         }
         if (this.buttstock != null) { // Arma também tem tem um buttstock novo
-
             weight = weight + this.buttstock.getWeight();
             recoil = recoil + this.buttstock.getModRecoi();
         }
-        
         return this;
     }
     
+    @Override
      public void putStyle(String type){
-        
         this.camouflage = type;
     }
     
+    @Override
     public void removeStyle(){
-        
         if(this.camouflage != null){
-            
             this.camouflage = null;
-        
-        }else{
-            
-            System.out.println("This gun has no camouflage.");
         }
     }
     
+    @Override
     public String getStyle(){
        
         return this.camouflage;

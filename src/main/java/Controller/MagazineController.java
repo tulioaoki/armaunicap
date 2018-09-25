@@ -1,6 +1,6 @@
 package Controller;
 
-import Dao.Dao;
+import Dao.MagazineDao;
 import arma.Bullet;
 import arma.Magazine;
 import java.util.ArrayList;
@@ -12,27 +12,27 @@ import javax.enterprise.context.ApplicationScoped;
  */
 @ApplicationScoped
 public class MagazineController {
-    Dao dao = Dao.getInstance();
+    private MagazineDao dao = MagazineDao.getInstance();
 
     public Magazine createMagazine(Magazine s){
-        dao.insertMagazine(s);
+        dao.insertItem(s);
         return s;
     }
     
     public Magazine updateMagazine(Magazine s){
-        dao.replaceMagazine(s, s.getId());
+        dao.replaceItem(s, s.getId());
         return s;
     }
     
     public ArrayList<Magazine> getMagazines(){
-        return dao.getMagazines();
+        return dao.getList();
     }
     
     public void removeMagazine(String id){
         int i;
         try{
             i = Integer.parseInt(id);
-            dao.removeMagazine(i);
+            dao.remove(i);
         }catch(NumberFormatException e){
             return;
         } 
@@ -42,7 +42,7 @@ public class MagazineController {
         int i;
         try{
             i = Integer.parseInt(id);
-            return dao.getMagazine(i);
+            return dao.getById(i);
         }catch(NumberFormatException e){
             return null;
         }
@@ -51,15 +51,14 @@ public class MagazineController {
 
     public Magazine addCompatibility(String id, String bullet) {
         int i;
-        int ib;
+        BulletController bc = new BulletController();
         Magazine m;
         try{
             i = Integer.parseInt(id);
-            ib = Integer.parseInt(bullet);
-            m = dao.getMagazine(i);
-            Bullet b = dao.getBullet(ib);
+            m = dao.getById(i);
+            Bullet b = bc.getById(bullet);
             m.addCompatibility(b);
-            dao.replaceMagazine(m, i);
+            dao.replaceItem(m, i);
             return m;
         }catch(NumberFormatException e){
             return null;
@@ -68,19 +67,19 @@ public class MagazineController {
     
     public Magazine load(String id, String bullet){
         int i;
-        int ib;
+        BulletController bc = new BulletController();
         Magazine m;
         try{
             i = Integer.parseInt(id);
-            ib = Integer.parseInt(bullet);
-            m = dao.getMagazine(i);
-            Bullet b = dao.getBullet(ib);
+            m = dao.getById(i);
+            Bullet b = bc.getById(bullet);
             m.load(b);
-            dao.replaceMagazine(m, i);
+            dao.replaceItem(m, i);
             return m;
         }catch(NumberFormatException e){
             return null;
         }
+
     }
 
     public Magazine unload(String id) {
@@ -88,40 +87,14 @@ public class MagazineController {
         Magazine m;
         try{
             i = Integer.parseInt(id);
-            m = dao.getMagazine(i);
+            m = dao.getById(i);
             m.unload();
-            dao.replaceMagazine(m, i);
+            dao.replaceItem(m, i);
             return m;
         }catch(NumberFormatException e){
             return null;
         }
-    }
 
-    public Magazine putStyle(String id, String style) {
-        int i;
-        Magazine m;
-        try{
-            i = Integer.parseInt(id);
-            m = dao.getMagazine(i);
-            m.putStyle(style);
-            dao.replaceMagazine(m, i);
-            return m;
-        }catch(NumberFormatException e){
-            return null;
-        }
-    }
-    
-    public Magazine delStyle(String id) {
-        int i;
-        Magazine m;
-        try{
-            i = Integer.parseInt(id);
-            m = dao.getMagazine(i);
-            dao.replaceMagazine(m, i);
-            return m;
-        }catch(NumberFormatException e){
-            return null;
-        }
     }
 }
 

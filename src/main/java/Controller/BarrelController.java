@@ -5,7 +5,7 @@
  */
 package Controller;
 
-import Dao.Dao;
+import Dao.BarrelDao;
 import arma.Barrel;
 import java.util.ArrayList;
 
@@ -15,69 +15,40 @@ import java.util.ArrayList;
  * @author zearthur99
  */
 public class BarrelController {
-    Dao dao = Dao.getInstance();
-    
+    private BarrelDao dao = BarrelDao.getInstance();
+
     public Barrel createBarrel(Barrel s){
-        dao.insertBarrel(s);
+        dao.insertItem(s);
         return s;
     }
-    
+
     public Barrel updateBarrel(Barrel s){
-        dao.replaceBarrel(s, s.getId());
+        dao.replaceItem(s, s.getId());
         return s;
     }
-    
+
     public ArrayList<Barrel> getBarrels(){
-        return dao.getBarrels();
+        return dao.getList();
     }
-    
+
     public void removeBarrel(String id){
         int i;
         try{
             i = Integer.parseInt(id);
-            dao.removeBarrel(i);
+            dao.remove(i);
         }catch(NumberFormatException e){
             return;
         }
     }
-    
+
     public Barrel getById(String id) {
         int i;
         try{
             i = Integer.parseInt(id);
-            return dao.getBarrel(i);
+            return dao.getById(i);
         }catch(NumberFormatException e){
             return null;
         }
-        
+
     }
-    
-    public Barrel putStyle(String id, String style) {
-        int i;
-        Barrel m;
-        try{
-            i = Integer.parseInt(id);
-            m = dao.getBarrel(i);
-            m.putStyle(style);
-            dao.replaceBarrel(m, i);
-            return m;
-        }catch(NumberFormatException e){
-            return null;
-        }
-    }
-    
-    public Barrel delStyle(String id) {
-        int i;
-        Barrel m;
-        try{
-            i = Integer.parseInt(id);
-            m = dao.getBarrel(i);
-            m.removeStyle();
-            dao.replaceBarrel(m, i);
-            return m;
-        }catch(NumberFormatException e){
-            return null;
-        }
-    }
-    
 }

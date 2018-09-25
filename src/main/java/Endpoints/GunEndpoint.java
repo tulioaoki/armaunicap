@@ -1,4 +1,4 @@
-package View;
+package Endpoints;
 import Controller.GunController;
 import arma.Gun;
 import java.util.ArrayList;
@@ -17,7 +17,7 @@ import javax.ws.rs.core.MediaType;
 @ApplicationScoped
 @Path("guns")
 @Produces("application/json")
-public class GunView {
+public class GunEndpoint {
     
     GunController controller = new GunController();
 
@@ -32,7 +32,7 @@ public class GunView {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public ArrayList<Gun> listGun() {
-       return controller.getGuns();
+       return controller.getList();
     }
 
     @Path("/{id}")
@@ -57,7 +57,7 @@ public class GunView {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public void deleteGun(@PathParam("id") String id) {
-        controller.removeGun(id);
+        controller.remove(id);
     }
     
     //ADD/PUTS
@@ -127,23 +127,6 @@ public class GunView {
     }
     //END REMOVES
     
-    
-    //Style related
-    @Path("/{id}/put-style/{style}")
-    @PUT
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Gun addStyle(@PathParam("id") String id,@PathParam("style") String style) throws NotFoundException {
-        return controller.putStyle(id, style);
-    }
-    
-    @Path("/{id}/remove-style")
-    @PUT
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public Gun delStyle(@PathParam("id") String id) throws NotFoundException {
-        return controller.delStyle(id);
-    }
     
     //COMPATIBILITY
     @Path("/{id}/compatibility-barrel/{item}")

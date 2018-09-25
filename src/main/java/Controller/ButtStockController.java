@@ -5,7 +5,7 @@
  */
 package Controller;
 
-import Dao.Dao;
+import Dao.ButtStockDao;
 import arma.ButtStock;
 import java.util.ArrayList;
 
@@ -15,65 +15,65 @@ import java.util.ArrayList;
  * @author zearthur99
  */
 public class ButtStockController {
-    Dao dao = Dao.getInstance();
-    
+    private ButtStockDao dao = ButtStockDao.getInstance();
+
     public ButtStock createButtStock(ButtStock s){
-        dao.insertButtStock(s);
+        dao.insertItem(s);
         return s;
     }
-    
+
     public ButtStock updateButtStock(ButtStock s){
-        dao.replaceButtStock(s, s.getId());
+        dao.replaceItem(s, s.getId());
         return s;
     }
-    
+
     public ArrayList<ButtStock> getButtStocks(){
-        return dao.getButtStocks();
+        return dao.getList();
     }
-    
-    public ButtStock getById(String id) {
-        int i;
-        try{
-            i = Integer.parseInt(id);
-            return dao.getButtStock(i);
-        }catch(NumberFormatException e){
-            return null;
-        }
-        
-    }
-    
+
     public void removeButtStock(String id){
         int i;
         try{
             i = Integer.parseInt(id);
-            dao.removeButtStock(i);
+            dao.remove(i);
         }catch(NumberFormatException e){
             return;
-        }   
+        }
     }
-    
+
+    public ButtStock getById(String id) {
+        int i;
+        try{
+            i = Integer.parseInt(id);
+            return dao.getById(i);
+        }catch(NumberFormatException e){
+            return null;
+        }
+
+    }
+
     public ButtStock putStyle(String id, String style) {
         int i;
         ButtStock m;
         try{
             i = Integer.parseInt(id);
-            m = dao.getButtStock(i);
+            m = dao.getById(i);
             m.putStyle(style);
-            dao.replaceButtStock(m, i);
+            dao.replaceItem(m, i);
             return m;
         }catch(NumberFormatException e){
             return null;
         }
     }
-    
+
     public ButtStock delStyle(String id) {
         int i;
         ButtStock m;
         try{
             i = Integer.parseInt(id);
-            m = dao.getButtStock(i);
+            m = dao.getById(i);
             m.removeStyle();
-            dao.replaceButtStock(m, i);
+            dao.replaceItem(m, i);
             return m;
         }catch(NumberFormatException e){
             return null;

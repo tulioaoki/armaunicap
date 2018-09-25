@@ -5,27 +5,28 @@
  */
 package Dao;
 
-import arma.Sight;
+import arma.ButtStock;
 import java.util.ArrayList;
 
 /**
  *
- * @author zearthur99
+ * @author tulioaoki
  */
-public class SightDao implements DaoBridge<Sight>{
-    
-    private final ArrayList<Sight> db;
+public class ButtStockDao implements DaoBridge<ButtStock> {
 
-    private static SightDao instance;
+    private final ArrayList< ButtStock> db;
 
-    public static SightDao getInstance(){
-        if(instance != null){
-            instance = new SightDao();
+    private static ButtStockDao instance;
+
+    public static ButtStockDao
+            getInstance() {
+        if (instance != null) {
+            instance = new ButtStockDao();
         }
         return instance;
     }
-    
-    private SightDao() {
+
+    private ButtStockDao() {
         this.db = new ArrayList<>();
     }
 
@@ -35,13 +36,13 @@ public class SightDao implements DaoBridge<Sight>{
     }
 
     @Override
-    public void insertItem(Sight s) {
+    public void insertItem(ButtStock s) {
         db.add(s);
     }
 
     @Override
-    public Sight getById(int id) {
-        for (Sight m : db) {
+    public ButtStock getById(int id) {
+        for (ButtStock m : db) {
             if (m.getId() == id) {
                 return m;
             }
@@ -51,20 +52,19 @@ public class SightDao implements DaoBridge<Sight>{
 
     @Override
     public void remove(int id) {
-        Sight i = this.getById(id);
+        ButtStock i = this.getById(id);
         db.remove(i);
     }
 
     @Override
-    public void replaceItem(Sight newSight, int id) {
-        Sight oldSight = this.getById(id);
-        int index = db.indexOf(oldSight);
-        db.set(index, newSight);
+    public void replaceItem(ButtStock newButtStock, int id) {
+        ButtStock oldButtStock = this.getById(id);
+        int index = db.indexOf(oldButtStock);
+        db.set(index, newButtStock);
     }
 
     @Override
     public boolean idExists(int id) {
         return this.getById(id) != null;
     }
-
 }

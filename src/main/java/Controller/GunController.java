@@ -5,7 +5,7 @@
  */
 package Controller;
 
-import Dao.Dao;
+import Dao.GunDao;
 import arma.Barrel;
 import arma.ButtStock;
 import arma.Gun;
@@ -19,10 +19,14 @@ import java.util.ArrayList;
  */
 public class GunController {
 
-    Dao dao = Dao.getInstance();
+    private GunDao dao = GunDao.getInstance();
+    private BarrelController barrels = new BarrelController();
+    private ButtStockController bt = new ButtStockController();
+    private MagazineController magazines = new MagazineController();
+    private SightController sights = new SightController();
 
     public Gun createGun(Gun s) {
-        dao.insertGun(s);
+        dao.insertItem(s);
         return s;
     }
 
@@ -31,24 +35,24 @@ public class GunController {
         Gun gun;
         try{
             g = Integer.parseInt(id);
-            gun = dao.getGun(g);
+            gun = dao.getById(g);
             gun.setName(s.getName());
-            dao.replaceGun(gun, g);
+            dao.replaceItem(gun, g);
             return gun;
         }catch(NumberFormatException e){
             return null;
         }
     }
 
-    public ArrayList< Gun> getGuns() {
-        return dao.getGuns();
+    public ArrayList< Gun> getList() {
+        return dao.getList();
     }
 
-    public void removeGun(String id) {
+    public void remove(String id) {
         int i;
         try {
             i = Integer.parseInt(id);
-            dao.removeGun(i);
+            dao.remove(i);
         } catch (NumberFormatException e) {
             return;
         }
@@ -58,53 +62,24 @@ public class GunController {
         int i;
         try {
             i = Integer.parseInt(id);
-            return dao.getGun(i);
+            return dao.getById(i);
         } catch (NumberFormatException e) {
             return null;
         }
     }
 
-    public Gun putStyle(String id, String style) {
-        int i;
-        Gun m;
-        try {
-            i = Integer.parseInt(id);
-            m = dao.getGun(i);
-            m.putStyle(style);
-            dao.replaceGun(m, i);
-            return m;
-        } catch (NumberFormatException e) {
-            return null;
-        }
-    }
-
-    public Gun delStyle(String id) {
-        int i;
-        Gun m;
-        try {
-            i = Integer.parseInt(id);
-            m = dao.getGun(i);
-            m.removeStyle();
-            dao.replaceGun(m, i);
-            return m;
-        } catch (NumberFormatException e) {
-            return null;
-        }
-    }
     
     //COMPATIBILITY ITENS
     
     public Gun addCompatibilityBarrel(String id, String item) {
         int i;
-        int ib;
         Gun m;
         try{
             i = Integer.parseInt(id);
-            ib = Integer.parseInt(item);
-            m = dao.getGun(i);
-            Barrel b = dao.getBarrel(ib);
+            m = dao.getById(i);
+            Barrel b = barrels.getById(item);
             m.addCompatibility(b);
-            dao.replaceGun(m, i);
+            dao.replaceItem(m, i);
             return m;
         }catch(NumberFormatException e){
             return null;
@@ -113,15 +88,13 @@ public class GunController {
     
     public Gun addCompatibilityBt(String id, String item) {
         int i;
-        int ib;
         Gun m;
         try{
             i = Integer.parseInt(id);
-            ib = Integer.parseInt(item);
-            m = dao.getGun(i);
-            ButtStock b = dao.getButtStock(ib);
+            m = dao.getById(i);
+            ButtStock b = bt.getById(item);
             m.addCompatibility(b);
-            dao.replaceGun(m, i);
+            dao.replaceItem(m, i);
             return m;
         }catch(NumberFormatException e){
             return null;
@@ -130,15 +103,13 @@ public class GunController {
     
     public Gun addCompatibilityMagazine(String id, String item) {
         int i;
-        int ib;
         Gun m;
         try{
             i = Integer.parseInt(id);
-            ib = Integer.parseInt(item);
-            m = dao.getGun(i);
-            Magazine b = dao.getMagazine(ib);
+            m = dao.getById(i);
+            Magazine b = magazines.getById(item);
             m.addCompatibility(b);
-            dao.replaceGun(m, i);
+            dao.replaceItem(m, i);
             return m;
         }catch(NumberFormatException e){
             return null;
@@ -147,15 +118,13 @@ public class GunController {
     
     public Gun addCompatibilitySight(String id, String item) {
         int i;
-        int ib;
         Gun m;
         try{
             i = Integer.parseInt(id);
-            ib = Integer.parseInt(item);
-            m = dao.getGun(i);
-            Sight b = dao.getSight(ib);
+            m = dao.getById(i);
+            Sight b = sights.getById(item);
             m.addCompatibility(b);
-            dao.replaceGun(m, i);
+            dao.replaceItem(m, i);
             return m;
         }catch(NumberFormatException e){
             return null;
@@ -164,16 +133,15 @@ public class GunController {
     
     //PUT ITENS
     public Gun putBarrel(String id, String item) {
-        int i,g;
+        int g;
         Gun gun;
         Barrel it;
         try{
-            i = Integer.parseInt(item);
             g = Integer.parseInt(id);
-            it = dao.getBarrel(i);
-            gun = dao.getGun(g);
+            it = barrels.getById(item);
+            gun = dao.getById(g);
             gun.setBarrel(it);
-            dao.replaceGun(gun, g);
+            dao.replaceItem(gun, g);
             return gun;
         }catch(NumberFormatException e){
             return null;
@@ -181,16 +149,15 @@ public class GunController {
     }
     
     public Gun putButtStock(String id, String item) {
-        int i,g;
+        int g;
         Gun gun;
         ButtStock it;
         try{
-            i = Integer.parseInt(item);
             g = Integer.parseInt(id);
-            it = dao.getButtStock(i);
-            gun = dao.getGun(g);
+            it = bt.getById(item);
+            gun = dao.getById(g);
             gun = gun.setButtstock(it);
-            dao.replaceGun(gun, g);
+            dao.replaceItem(gun, g);
             return gun;
         }catch(NumberFormatException e){
             return null;
@@ -198,16 +165,15 @@ public class GunController {
     }
     
     public Gun putMagazine(String id, String item) {
-        int i,g;
+        int g;
         Gun gun;
         Magazine it;
         try{
-            i = Integer.parseInt(item);
             g = Integer.parseInt(id);
-            it = dao.getMagazine(i);
-            gun = dao.getGun(g);
+            it = magazines.getById(item);
+            gun = dao.getById(g);
             gun = gun.setMagazine(it);
-            dao.replaceGun(gun, g);
+            dao.replaceItem(gun, g);
             return gun;
         }catch(NumberFormatException e){
             return null;
@@ -215,16 +181,15 @@ public class GunController {
     }
     
     public Gun putSight(String id, String item) {
-        int i,g;
+        int g;
         Gun gun;
         Sight it;
         try{
-            i = Integer.parseInt(item);
             g = Integer.parseInt(id);
-            it = dao.getSight(i);
-            gun = dao.getGun(g);
+            it = sights.getById(item);
+            gun = dao.getById(g);
             gun = gun.setSight(it);
-            dao.replaceGun(gun, g);
+            dao.replaceItem(gun, g);
             return gun;
         }catch(NumberFormatException e){
             return null;
@@ -239,9 +204,9 @@ public class GunController {
         Gun gun;
         try{
             g = Integer.parseInt(id);
-            gun = dao.getGun(g);
+            gun = dao.getById(g);
             gun = gun.setBarrel(null);
-            dao.replaceGun(gun, g);
+            dao.replaceItem(gun, g);
             return gun;
         }catch(NumberFormatException e){
             return null;
@@ -253,9 +218,9 @@ public class GunController {
         Gun gun;
         try{
             g = Integer.parseInt(id);
-            gun = dao.getGun(g);
+            gun = dao.getById(g);
             gun = gun.setButtstock(null);
-            dao.replaceGun(gun, g);
+            dao.replaceItem(gun, g);
             return gun;
         }catch(NumberFormatException e){
             return null;
@@ -267,9 +232,9 @@ public class GunController {
         Gun gun;
         try{
             g = Integer.parseInt(id);
-            gun = dao.getGun(g);
+            gun = dao.getById(g);
             gun = gun.setMagazine(null);
-            dao.replaceGun(gun, g);
+            dao.replaceItem(gun, g);
             return gun;
         }catch(NumberFormatException e){
             return null;
@@ -281,9 +246,9 @@ public class GunController {
         Gun gun;
         try{
             g = Integer.parseInt(id);
-            gun = dao.getGun(g);
+            gun = dao.getById(g);
             gun = gun.setSight(null);
-            dao.replaceGun(gun, g);
+            dao.replaceItem(gun, g);
             return gun;
         }catch(NumberFormatException e){
             return null;

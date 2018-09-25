@@ -6,8 +6,6 @@
 package Dao;
 
 import arma.Barrel;
-import arma.Barrel;
-import arma.Barrel;
 import java.util.ArrayList;
 
 /**
@@ -38,7 +36,7 @@ public class BarrelDao implements DaoBridge<Barrel>{
 
     @Override
     public void insertItem(Barrel s) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        db.add(s);
     }
 
     @Override
