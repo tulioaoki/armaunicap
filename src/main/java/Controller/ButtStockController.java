@@ -15,7 +15,7 @@ import java.util.ArrayList;
  * @author zearthur99
  */
 public class ButtStockController {
-    private ButtStockDao dao = ButtStockDao.getInstance();
+    private final ButtStockDao dao = ButtStockDao.getInstance();
 
     public ButtStockController() {
     }
@@ -23,7 +23,7 @@ public class ButtStockController {
     public ButtStock createButtStock(ButtStock s){
         if(dao.idExists(s.getId()) == false){
             dao.insertItem(s);
-            return s;
+        return s;
         }
         return null;
     }
@@ -46,7 +46,7 @@ public class ButtStockController {
             return;
         }
     }
-
+    
     public ButtStock getById(String id) {
         int i;
         try{

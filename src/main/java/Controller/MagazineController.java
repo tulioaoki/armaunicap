@@ -15,8 +15,11 @@ public class MagazineController {
     private MagazineDao dao = MagazineDao.getInstance();
 
     public Magazine createMagazine(Magazine s){
-        dao.insertItem(s);
+        if(dao.idExists(s.getId()) == false){
+            dao.insertItem(s);
         return s;
+        }
+        return null;
     }
     
     public Magazine updateMagazine(Magazine s){

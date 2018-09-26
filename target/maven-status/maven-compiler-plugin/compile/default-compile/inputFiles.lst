@@ -1,4 +1,3 @@
-/home/tulioaoki/poo/src/main/java/arma/Camouflage.java
 /home/tulioaoki/poo/src/main/java/arma/Barrel.java
 /home/tulioaoki/poo/src/main/java/Controller/BarrelController.java
 /home/tulioaoki/poo/src/main/java/Controller/SightController.java
@@ -10,6 +9,7 @@
 /home/tulioaoki/poo/src/main/java/Controller/MagazineController.java
 /home/tulioaoki/poo/src/main/java/Controller/GunController.java
 /home/tulioaoki/poo/src/main/java/Controller/BulletController.java
+/home/tulioaoki/poo/src/main/java/CustomResponses/CustomResponse.java
 /home/tulioaoki/poo/src/main/java/Dao/GunDao.java
 /home/tulioaoki/poo/src/main/java/Endpoints/MagazineEndpoint.java
 /home/tulioaoki/poo/src/main/java/arma/Bullet.java

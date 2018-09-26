@@ -17,8 +17,11 @@ public class SightController {
     }
     
     public Sight createSight(Sight s){
-        dao.insertItem(s);
+        if(dao.idExists(s.getId()) == false){
+            dao.insertItem(s);
         return s;
+        }
+        return null;
     }
     
     public Sight updateSight(Sight s){
@@ -36,7 +39,6 @@ public class SightController {
             i = Integer.parseInt(id);
             dao.remove(i);
         }catch(NumberFormatException e){
-            return;
         } 
     }
 

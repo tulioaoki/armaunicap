@@ -21,8 +21,11 @@ public class BarrelController {
     }
     
     public Barrel createBarrel(Barrel s){
-        dao.insertItem(s);
+        if(dao.idExists(s.getId()) == false){
+            dao.insertItem(s);
         return s;
+        }
+        return null;
     }
 
     public Barrel updateBarrel(Barrel s){
@@ -40,7 +43,6 @@ public class BarrelController {
             i = Integer.parseInt(id);
             dao.remove(i);
         }catch(NumberFormatException e){
-            return;
         }
     }
 

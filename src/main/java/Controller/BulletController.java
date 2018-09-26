@@ -14,8 +14,11 @@ public class BulletController {
     private final BulletDao dao = BulletDao.getInstance();
     
     public Bullet createBullet(Bullet s){
-        dao.insertItem(s);
+        if(dao.idExists(s.getId()) == false){
+            dao.insertItem(s);
         return s;
+        }
+        return null;
     }
 
     public Bullet updateBullet(Bullet s){
