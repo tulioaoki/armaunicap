@@ -59,13 +59,17 @@ public class GunController {
         return dao.getList();
     }
 
-    public void remove(String id) {
+    public boolean remove(String id) {
         int i;
-        try {
+        try{
             i = Integer.parseInt(id);
-            dao.remove(i);
-        } catch (NumberFormatException e) {
-            return;
+            if(this.getById(id) != null){
+                dao.remove(i);
+                return true;
+            }
+            return false;
+        }catch(NumberFormatException e){
+            return false;
         }
     }
 

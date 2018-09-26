@@ -1,5 +1,5 @@
 package Endpoints;
-import Controller.BarrelController;
+import CustomResponses.BarrelResponseBuilder;
 import arma.Barrel;
 import java.util.ArrayList;
 import javax.enterprise.context.RequestScoped;
@@ -13,41 +13,42 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 @RequestScoped
 @Path("barrels")
 @Produces("application/json")
 public class BarrelEndpoint {
-    BarrelController controller = new BarrelController();
+    BarrelResponseBuilder response_manager = new BarrelResponseBuilder();
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public Barrel postBarrel(Barrel b) {
-        return controller.createBarrel(b);
+    public Response postBarrel(Barrel b) {
+        return response_manager.post(b);
     }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public ArrayList<Barrel> listBarrel() {
-        return controller.getBarrels();
+    public Response listBarrel() {
+        return response_manager.list();
     }
 
     @Path("/{id}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Barrel detailBarrel(@PathParam("id") String id) {
-        return controller.getById(id);
+    public Response detailBarrel(@PathParam("id") String id) {
+        return response_manager.get(id);
     }
 
     @Path("/{id}")
     @PUT
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public Barrel updateBarrel(@PathParam("id") String id, Barrel updatedBarrel) throws NotFoundException {
+    public Response updateBarrel(@PathParam("id") String id, Barrel updatedBarrel) throws NotFoundException {
         updatedBarrel.setId(id);
-        return controller.updateBarrel(updatedBarrel);
+        return response_manager.put(id,updatedBarrel);
     }
 
     @Path("/{id}")
@@ -55,6 +56,6 @@ public class BarrelEndpoint {
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public void deleteBarrel(@PathParam("id") String id) {
-         controller.removeBarrel(id);
+         response_manager.delete(id);
     }
 }

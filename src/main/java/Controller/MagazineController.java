@@ -22,23 +22,35 @@ public class MagazineController {
         return null;
     }
     
-    public Magazine updateMagazine(Magazine s){
-        dao.replaceItem(s, s.getId());
-        return s;
+    public Magazine updateMagazine(String id,Magazine s){
+        int i = Integer.parseInt(id);
+        try{
+            if(dao.getById(i) == null){
+                return null;
+            }
+            dao.replaceItem(s, s.getId());
+            return s;
+        }catch(NumberFormatException e){
+            return null;
+        }
     }
     
     public ArrayList<Magazine> getMagazines(){
         return dao.getList();
     }
     
-    public void removeMagazine(String id){
+    public boolean removeMagazine(String id){
         int i;
         try{
             i = Integer.parseInt(id);
-            dao.remove(i);
+            if(this.getById(id) != null){
+                dao.remove(i);
+                return true;
+            }
+            return false;
         }catch(NumberFormatException e){
-            return;
-        } 
+            return false;
+        }
     }
 
     public Magazine getById(String id) {
@@ -76,9 +88,15 @@ public class MagazineController {
             i = Integer.parseInt(id);
             m = dao.getById(i);
             Bullet b = bc.getById(bullet);
-            m.load(b);
-            dao.replaceItem(m, i);
-            return m;
+            if(b == null){
+                return null;
+            }
+            if(m.load(b)){
+                dao.replaceItem(m, i);
+                return m;
+            }else{
+                return null;
+            }
         }catch(NumberFormatException e){
             return null;
         }

@@ -28,22 +28,34 @@ public class ButtStockController {
         return null;
     }
 
-    public ButtStock updateButtStock(ButtStock s){
-        dao.replaceItem(s, s.getId());
-        return s;
+    public ButtStock updateButtStock(String id,ButtStock s){
+        int i = Integer.parseInt(id);
+        try{
+            if(dao.getById(i) == null){
+                return null;
+            }
+            dao.replaceItem(s, s.getId());
+            return s;
+        }catch(NumberFormatException e){
+            return null;
+        }
     }
 
     public ArrayList<ButtStock> getButtStocks(){
         return dao.getList();
     }
 
-    public void removeButtStock(String id){
+    public boolean removeButtStock(String id){
         int i;
         try{
             i = Integer.parseInt(id);
-            dao.remove(i);
+            if(this.getById(id) != null){
+                dao.remove(i);
+                return true;
+            }
+            return false;
         }catch(NumberFormatException e){
-            return;
+            return false;
         }
     }
     

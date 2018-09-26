@@ -1,3 +1,5 @@
+CustomResponses/ResponseBuilder.class
+CustomResponses/BarrelResponseBuilder.class
 Endpoints/SightEndpoint.class
 arma/Barrel.class
 Controller/SightController.class
@@ -7,12 +9,17 @@ arma/Sight.class
 Controller/MagazineController.class
 rest/RESTApplication.class
 Controller/BulletController.class
+CustomResponses/GunResponseBuilder.class
 Controller/GunController.class
+CustomResponses/BSResponseBuilder.class
+CustomResponses/BulletResponseBuilder.class
+CustomResponses/SightResponseBuilder.class
 Dao/DaoBridge.class
 arma/Arma.class
 Dao/BulletDao.class
 Dao/MagazineDao.class
 arma/Bullet.class
+CustomResponses/MagazineResponseBuilder.class
 arma/Magazine.class
 Endpoints/BarrelEndpoint.class
 CustomResponses/CustomResponse.class

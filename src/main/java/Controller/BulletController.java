@@ -21,21 +21,34 @@ public class BulletController {
         return null;
     }
 
-    public Bullet updateBullet(Bullet s){
-        dao.replaceItem(s, s.getId());
-        return s;
+    public Bullet updateBullet(String id, Bullet s){
+        int i = Integer.parseInt(id);
+        try{
+            if(dao.getById(i) == null){
+                return null;
+            }
+            dao.replaceItem(s, s.getId());
+            return s;
+        }catch(NumberFormatException e){
+            return null;
+        }
     }
 
     public ArrayList getBullets(){
         return dao.getList();
     }
 
-    public void removeBullet(String id){
+    public boolean removeBullet(String id){
         int i;
         try{
             i = Integer.parseInt(id);
-            dao.remove(i);
+            if(this.getById(id) != null){
+                dao.remove(i);
+                return true;
+            }
+            return false;
         }catch(NumberFormatException e){
+            return false;
         }
     }
 

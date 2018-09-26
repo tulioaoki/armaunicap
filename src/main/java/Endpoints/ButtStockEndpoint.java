@@ -1,7 +1,9 @@
 package Endpoints;
-import Controller.ButtStockController;
+import CustomResponses.BSResponseBuilder;
+import CustomResponses.BulletResponseBuilder;
+import arma.Bullet;
 import arma.ButtStock;
-import java.util.ArrayList;
+
 import javax.enterprise.context.RequestScoped;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Consumes;
@@ -19,42 +21,43 @@ import javax.ws.rs.core.Response;
 @Path("buttstocks")
 @Produces("application/json")
 public class ButtStockEndpoint {
-    ButtStockController controller = new ButtStockController();
-    
+    BSResponseBuilder response_manager = new BSResponseBuilder();
+
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    public ButtStock postButtStock(ButtStock b) {
-        return controller.createButtStock(b);
+    public Response postBarrel(ButtStock b) {
+        return response_manager.post(b);
     }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public ArrayList<ButtStock> listButtStock() {
-        return controller.getButtStocks();
+    public Response listButtStock() {
+        return response_manager.list();
     }
 
     @Path("/{id}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public ButtStock detailButtStock(@PathParam("id") String id) {
-        return controller.getById(id);
+    public Response detailButtStock(@PathParam("id") String id) {
+        return response_manager.get(id);
     }
 
     @Path("/{id}")
     @PUT
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public ButtStock updateButtStock(@PathParam("id") String id, ButtStock updatedButtStock) throws NotFoundException {
-        return controller.updateButtStock(updatedButtStock);
+    public Response updateButtStock(@PathParam("id") String id, ButtStock updatedButtStock) throws NotFoundException {
+        updatedButtStock.setId(id);
+        return response_manager.put(id,updatedButtStock);
     }
-    
+
     @Path("/{id}")
     @DELETE
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public void deleteButtStock(@PathParam("id") String id) {
-        controller.removeButtStock(id);
+        response_manager.delete(id);
     }
 }

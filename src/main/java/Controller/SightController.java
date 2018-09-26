@@ -24,22 +24,35 @@ public class SightController {
         return null;
     }
     
-    public Sight updateSight(Sight s){
-        dao.replaceItem(s, s.getId());
-        return s;
+    public Sight updateSight(String id,Sight s){
+        int i = Integer.parseInt(id);
+        try{
+            if(dao.getById(i) == null){
+                return null;
+            }
+            dao.replaceItem(s, s.getId());
+            return s;
+        }catch(NumberFormatException e){
+            return null;
+        }
     }
     
     public ArrayList<Sight> getSights(){
         return dao.getList();
     }
     
-    public void removeSight(String id){
+    public boolean removeSight(String id){
         int i;
         try{
             i = Integer.parseInt(id);
-            dao.remove(i);
+            if(this.getById(id) != null){
+                dao.remove(i);
+                return true;
+            }
+            return false;
         }catch(NumberFormatException e){
-        } 
+            return false;
+        }
     }
 
     public Sight getById(String id) {

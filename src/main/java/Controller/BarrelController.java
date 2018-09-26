@@ -28,21 +28,34 @@ public class BarrelController {
         return null;
     }
 
-    public Barrel updateBarrel(Barrel s){
-        dao.replaceItem(s, s.getId());
-        return s;
+    public Barrel updateBarrel(String id, Barrel s){
+        int i = Integer.parseInt(id);
+        try{
+            if(dao.getById(i) == null){
+                return null;
+            }
+            dao.replaceItem(s, s.getId());
+            return s;
+        }catch(NumberFormatException e){
+            return null;
+        }
     }
 
     public ArrayList<Barrel> getBarrels(){
         return dao.getList();
     }
 
-    public void removeBarrel(String id){
+    public boolean removeBarrel(String id){
         int i;
         try{
             i = Integer.parseInt(id);
-            dao.remove(i);
+            if(this.getById(id) != null){
+                dao.remove(i);
+                return true;
+            }
+            return false;
         }catch(NumberFormatException e){
+            return false;
         }
     }
 

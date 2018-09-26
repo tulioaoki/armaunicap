@@ -53,10 +53,12 @@ public class Magazine extends Item {
         return ammo;
     }
     
-    public void load(Bullet b){
+    public boolean load(Bullet b){
         if(b.compatible(this.compatibility)){ 
             this.ammo = b;
+            return true;
         }
+        return false;
         
     }
     
