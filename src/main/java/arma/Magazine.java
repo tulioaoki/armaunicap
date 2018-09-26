@@ -11,12 +11,11 @@ import javax.enterprise.context.ApplicationScoped;
  * @author arthur
  */
 @ApplicationScoped
-public class Magazine extends Item implements Camouflage{
+public class Magazine extends Item {
     private String name;
     private int capacity;
     private ArrayList<Item> compatibility;
     private Bullet ammo;
-    private String camouflage;
     
     @JsonCreator
     public Magazine(
@@ -66,28 +65,18 @@ public class Magazine extends Item implements Camouflage{
     }
     
     @Override
-    public void putStyle(String type){
-        
-        this.camouflage = type;
-    }
-    
-    @Override
-    public void removeStyle(){
-        if(this.camouflage != null){
-            this.camouflage = null;
-        }
-    }
-    
-    public String getStyle(){
-       
-        return this.camouflage;
-    }
-    
-    @Override
     public String toString(){
         String ammot = (this.ammo == null)?"null":this.ammo.getName();
         StringBuilder tstring = new StringBuilder();
-        tstring.append("Name: ").append(this.name).append(" ID: ").append(this.getId()).append(" Capacity: ").append(this.capacity).append(" Bullet: ").append(ammot).append(" Camouflage: ").append(this.camouflage);
+        tstring
+                .append("Name: ")
+                .append(this.name)
+                .append(" ID: ")
+                .append(this.getId())
+                .append(" Capacity: ")
+                .append(this.capacity)
+                .append(" Bullet: ")
+                .append(ammot);
         return tstring.toString();
     }
 }

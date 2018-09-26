@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import javax.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
-public class Gun extends Item implements Camouflage{
+public class Gun extends Item{
     private String name;
     private int defaultPrecision;
     private int defaultRecoil;
@@ -25,7 +25,6 @@ public class Gun extends Item implements Camouflage{
     private ButtStock buttstock;
     private Barrel barrel;
     private ArrayList<Item> compatibility;
-    private String camouflage;
     
     @JsonCreator
     public Gun(
@@ -180,24 +179,6 @@ public class Gun extends Item implements Camouflage{
         }
         return this;
     }
-    
-    @Override
-     public void putStyle(String type){
-        this.camouflage = type;
-    }
-    
-    @Override
-    public void removeStyle(){
-        if(this.camouflage != null){
-            this.camouflage = null;
-        }
-    }
-    
-    @Override
-    public String getStyle(){
-       
-        return this.camouflage;
-    } 
 
     public String getName() {
         return name;
@@ -248,8 +229,6 @@ public class Gun extends Item implements Camouflage{
                 .append(this.capacity)
                 .append(" Weight: ")
                 .append(this.weight)
-                .append(" Camouflage: ")
-                .append(this.camouflage)
                 .append("BARREL: ")
                 .append(this.barrel);
         return sb.toString();

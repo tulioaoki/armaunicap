@@ -9,12 +9,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  *
  * @author arthur
  */
-public class ButtStock extends Item implements Camouflage{
+public class ButtStock extends Item{
     
     private int modRecoil;
     private String name;
     private float weight;
-    private String camouflage;
     
     @JsonCreator
     public ButtStock(
@@ -53,32 +52,18 @@ public class ButtStock extends Item implements Camouflage{
         this.weight = weight;
     }
     
-    public void putStyle(String type){
-        
-        this.camouflage = type;
-    }
-    
-    public void removeStyle(){
-        
-        if(this.camouflage != null){
-            
-            this.camouflage = null;
-        
-        }else{
-            
-            System.out.println("This buttStock has no camouflage.");
-        }
-    }
-    
-    public String getStyle(){
-       
-        return this.camouflage;
-    }
-    
     @Override
     public String toString(){
         StringBuilder tstring = new StringBuilder();
-        tstring.append("Name: ").append(this.name).append(" ID: ").append(this.getId()).append(" Recoil modfier: ").append(this.modRecoil).append(" Weight: ").append(this.weight).append(" Camouflage: ").append(this.camouflage);
+        tstring
+                .append("Name: ")
+                .append(this.name)
+                .append(" ID: ")
+                .append(this.getId())
+                .append(" Recoil modfier: ")
+                .append(this.modRecoil)
+                .append(" Weight: ")
+                .append(this.weight);
         return tstring.toString();
     }
 }

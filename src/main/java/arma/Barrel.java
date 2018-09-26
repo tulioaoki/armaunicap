@@ -8,12 +8,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  *
  * @author arthur
  */
-public class Barrel extends Item implements Camouflage{
+public class Barrel extends Item{
     private String name;
     private int modSound;
     private int modRange;
     private float weight;
-    private String camouflage;
     
     @JsonCreator
     public Barrel(
@@ -61,32 +60,21 @@ public class Barrel extends Item implements Camouflage{
         this.weight = weight;
     }
     
-    public void putStyle(String type){
-        
-        this.camouflage = type;
-    }
-    
-    public void removeStyle(){
-        
-        if(this.camouflage != null){
-            
-            this.camouflage = null;
-        
-        }else{
-            
-            System.out.println("This barrel has no camouflage.");
-        }
-    }
-    
-   public String getStyle(){
-       
-        return this.camouflage;
-    }
     
     @Override
     public String toString(){
         StringBuilder tstring = new StringBuilder();
-        tstring.append("Name: ").append(this.name).append(" ID: ").append(this.getId()).append(" Sound modifier: ").append(this.modSound).append(" Range modifier: ").append(this.modRange).append(" Weight: ").append(this.weight).append(" Camouflage: ").append(this.camouflage);
+        tstring
+                .append("Name: ")
+                .append(this.name)
+                .append(" ID: ")
+                .append(this.getId())
+                .append(" Sound modifier: ")
+                .append(this.modSound)
+                .append(" Range modifier: ")
+                .append(this.modRange)
+                .append(" Weight: ")
+                .append(this.weight);
         return tstring.toString();
                 
     }

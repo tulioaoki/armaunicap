@@ -21,8 +21,11 @@ public class ButtStockController {
     }
     
     public ButtStock createButtStock(ButtStock s){
-        dao.insertItem(s);
-        return s;
+        if(dao.idExists(s.getId()) == false){
+            dao.insertItem(s);
+            return s;
+        }
+        return null;
     }
 
     public ButtStock updateButtStock(ButtStock s){
@@ -53,33 +56,5 @@ public class ButtStockController {
             return null;
         }
 
-    }
-
-    public ButtStock putStyle(String id, String style) {
-        int i;
-        ButtStock m;
-        try{
-            i = Integer.parseInt(id);
-            m = dao.getById(i);
-            m.putStyle(style);
-            dao.replaceItem(m, i);
-            return m;
-        }catch(NumberFormatException e){
-            return null;
-        }
-    }
-
-    public ButtStock delStyle(String id) {
-        int i;
-        ButtStock m;
-        try{
-            i = Integer.parseInt(id);
-            m = dao.getById(i);
-            m.removeStyle();
-            dao.replaceItem(m, i);
-            return m;
-        }catch(NumberFormatException e){
-            return null;
-        }
     }
 }

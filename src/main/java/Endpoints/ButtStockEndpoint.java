@@ -49,14 +49,6 @@ public class ButtStockEndpoint {
         return controller.updateButtStock(updatedButtStock);
     }
     
-    @Path("/{id}/remove-style")
-    @PUT
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public ButtStock delStyle(@PathParam("id") String id) throws NotFoundException {
-        return controller.delStyle(id);
-    }
-    
     @Path("/{id}")
     @DELETE
     @Produces(MediaType.APPLICATION_JSON)
@@ -64,13 +56,4 @@ public class ButtStockEndpoint {
     public void deleteButtStock(@PathParam("id") String id) {
         controller.removeButtStock(id);
     }
-    
-    @Path("/{id}/put-style/{style}")
-    @PUT
-    @Produces(MediaType.APPLICATION_JSON)
-    @Consumes(MediaType.APPLICATION_JSON)
-    public ButtStock addStyle(@PathParam("id") String id,@PathParam("style") String style) throws NotFoundException {
-        return controller.putStyle(id, style);
-    }
-
 }

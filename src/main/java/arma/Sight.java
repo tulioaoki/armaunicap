@@ -9,12 +9,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  *
  * @author arthur
  */
-public class Sight extends Item implements Camouflage {
+public class Sight extends Item {
     
     private String name;
     private int modPrecission;
     private float weight;
-    private String camouflage;
     
     public Sight(int id) {
         super(id);
@@ -55,33 +54,19 @@ public class Sight extends Item implements Camouflage {
 
     public void setWeight(float weight) {
         this.weight = weight;
-    }
-    
-    public void putStyle(String type){
-        
-        this.camouflage = type;
-    }
-    
-    public void removeStyle(){
-        if(this.camouflage != null){
-            
-            this.camouflage = null;
-        
-        }else{
-            
-            System.out.println("This sight has no camouflage.");
-        }
-    }
-    
-    public String getStyle(){
-       
-        return this.camouflage;
-    }   
+    }  
        
     @Override
     public String toString(){
       StringBuilder tstring = new StringBuilder();
-      tstring.append("Name: ").append(this.name).append(" ID: ").append(this.getId()).append(" Precision modifier: ").append(this.modPrecission).append(" Weight: ").append(this.weight).append(" Camouflage: ").append(this.camouflage);
+      tstring.append("Name: ")
+              .append(this.name)
+              .append(" ID: ")
+              .append(this.getId())
+              .append(" Precision modifier: ")
+              .append(this.modPrecission)
+              .append(" Weight: ")
+              .append(this.weight);
       return tstring.toString();
     }
 }
