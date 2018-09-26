@@ -166,12 +166,13 @@ public class Gun extends Item{
         }
         if (this.magazine != null) { // Arma também tem um maganize novo
             this.capacity = this.magazine.getCapacity();
-            weight = weight + (this.magazine.getCapacity() * this.magazine.getAmmo().getWeight());
-            this.damage = this.magazine.getAmmo().getModDamage();
-            sound = sound + this.magazine.getAmmo().getModSound();
-        } else {
-            this.capacity = 0;
-            this.damage = 0;
+            float ammoWeight = 0;
+            if(this.magazine.getAmmo() != null){
+                ammoWeight = this.magazine.getAmmo().getWeight();
+                this.damage = this.magazine.getAmmo().getModDamage();
+                sound = sound + this.magazine.getAmmo().getModSound();
+            }
+            weight = weight + (this.magazine.getCapacity() * ammoWeight);            
         }
         if (this.buttstock != null) { // Arma também tem tem um buttstock novo
             weight = weight + this.buttstock.getWeight();
