@@ -113,7 +113,7 @@ public class GunResponseBuilder implements ResponseBuilder {
             CustomResponse r = new CustomResponse(item, true, 200, "Gun alterado com sucesso.");
             return Response.status(r.getStatus_code()).entity(r).build();
         }
-        CustomResponse r = new CustomResponse("A url inserida contém elementos de ID inválidos.", false, 400, "O Gun não pôde ser alterado.");
+        CustomResponse r = new CustomResponse("Itens incompatíveis.", false, 400, "O Gun não pôde ser alterado.");
         return Response.status(r.getStatus_code()).entity(r).build();
     }
 
@@ -123,7 +123,7 @@ public class GunResponseBuilder implements ResponseBuilder {
             CustomResponse r = new CustomResponse(item, true, 200, "Gun alterado com sucesso.");
             return Response.status(r.getStatus_code()).entity(r).build();
         }
-        CustomResponse r = new CustomResponse("A url inserida contém elementos de ID inválidos.", false, 400, "O Gun não pôde ser alterado.");
+        CustomResponse r = new CustomResponse("Itens incompatíveis.", false, 400, "O Gun não pôde ser alterado.");
         return Response.status(r.getStatus_code()).entity(r).build();
     }
 
@@ -133,7 +133,7 @@ public class GunResponseBuilder implements ResponseBuilder {
             CustomResponse r = new CustomResponse(item, true, 200, "Gun alterado com sucesso.");
             return Response.status(r.getStatus_code()).entity(r).build();
         }
-        CustomResponse r = new CustomResponse("A url inserida contém elementos de ID inválidos.", false, 400, "O Gun não pôde ser alterado.");
+        CustomResponse r = new CustomResponse("Itens incompatíveis.", false, 400, "O Gun não pôde ser alterado.");
         return Response.status(r.getStatus_code()).entity(r).build();
     }
 
@@ -143,7 +143,7 @@ public class GunResponseBuilder implements ResponseBuilder {
             CustomResponse r = new CustomResponse(item, true, 200, "Gun alterado com sucesso.");
             return Response.status(r.getStatus_code()).entity(r).build();
         }
-        CustomResponse r = new CustomResponse("A url inserida contém elementos de ID inválidos.", false, 400, "O Gun não pôde ser alterado.");
+        CustomResponse r = new CustomResponse("Itens incompatíveis.", false, 400, "O Gun não pôde ser alterado.");
         return Response.status(r.getStatus_code()).entity(r).build();
     }
 

@@ -97,49 +97,43 @@ public class Gun extends Item{
     }
 
     public Gun setSight(Sight sight) {
-
-        if (sight.compatible(compatibility)) {
-
+        if (compatibility.contains(sight)) {
             this.sight = sight;
             return recalculate();
-
         } else {
-            return recalculate();
+            return null;
 
         }
     }
 
     public Gun setMagazine(Magazine magazine) {
-        if (magazine.compatible(compatibility)) {
+        if (compatibility.contains(magazine)) {
             this.magazine = magazine;
             return recalculate();
 
         } else {
 
-            return recalculate();
+            return null;
         }
     }
 
     public Gun setButtstock(ButtStock buttstock) {
-
-        if (buttstock.compatible(compatibility)) {
-
+        if (compatibility.contains(buttstock)) {
             this.buttstock = buttstock;
             return recalculate();
-
         } else {
 
-            return recalculate();
+            return null;
         }
     }
 
     public Gun setBarrel(Barrel barrel) {
 
-        if (barrel.compatible(compatibility)) {
+        if (compatibility.contains(magazine)) {
             this.barrel = barrel;
             return recalculate();
         } else {
-            return recalculate();
+            return null;
         }
     }
 

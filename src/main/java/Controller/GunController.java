@@ -12,6 +12,8 @@ import arma.Gun;
 import arma.Magazine;
 import arma.Sight;
 import java.util.ArrayList;
+import javax.ws.rs.WebApplicationException;
+import javax.ws.rs.core.Response;
 
 /**
  *
@@ -156,10 +158,13 @@ public class GunController {
             it = barrels.getById(item);
             gun = dao.getById(g);
             gun.setBarrel(it);
+            if(gun == null){
+                return null;
+            }
             dao.replaceItem(gun, g);
             return gun;
         }catch(NumberFormatException e){
-            return null;
+            throw new WebApplicationException(Response.Status.NOT_FOUND);
         }
     }
     
@@ -172,10 +177,13 @@ public class GunController {
             it = bt.getById(item);
             gun = dao.getById(g);
             gun = gun.setButtstock(it);
+            if(gun == null){
+                return null;
+            }
             dao.replaceItem(gun, g);
             return gun;
         }catch(NumberFormatException e){
-            return null;
+            throw new WebApplicationException(Response.Status.NOT_FOUND);
         }
     }
     
@@ -188,10 +196,13 @@ public class GunController {
             it = magazines.getById(item);
             gun = dao.getById(g);
             gun = gun.setMagazine(it);
+            if(gun == null){
+                return null;
+            }
             dao.replaceItem(gun, g);
             return gun;
         }catch(NumberFormatException e){
-            return null;
+            throw new WebApplicationException(Response.Status.NOT_FOUND);
         }
     }
     
@@ -204,10 +215,13 @@ public class GunController {
             it = sights.getById(item);
             gun = dao.getById(g);
             gun = gun.setSight(it);
+            if(gun == null){
+                return null;
+            }
             dao.replaceItem(gun, g);
             return gun;
         }catch(NumberFormatException e){
-            return null;
+            throw new WebApplicationException(Response.Status.NOT_FOUND);
         }
     }
     
